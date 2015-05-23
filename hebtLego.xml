@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE linacLego SYSTEM "../dtdFiles/LinacLego.dtd">
+<linacLego title="EssHebtLinac" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <header>
+        <slotModels id="HebtSlotModels">
+            <slotModel id="HebtLwu" >
+				<infolink id="HebtLwu" type="slot">https://chess.esss.lu.se/enovia/tvc-action/showObject/dmg_Information/ESS-0025633/valid</infolink>
+                <var id="g1" type="double"/>
+                <var id="g2" type="double"/>
+                <var id="xkick" type="double"/>
+                <var id="ykick" type="double"/>
+                <ble id="DRF-010" type="drift">
+                    <d id="l" type="double" unit="mm">256.2</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="ry" type="double" unit="mm">0</d>
+                </ble>
+                <ble id="QH-010" model="Quad410" type="quad" disc="BMD">
+                    <d id="l" type="double" unit="mm">410</d>
+                    <d id="g" type="double" unit="T/m">g1</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                </ble>
+                <ble disc="BMD" id="COR-010" model="ElpTrim" type="thinSteering">
+                    <d id="xkick" type="double" unit="Tm">xkick</d>
+                    <d id="ykick" type="double" unit="Tm">ykick</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="kickType" type="double" unit="unit">0</d>
+                </ble>
+                <ble id="DRF-020" type="drift">
+                    <d id="l" type="double" unit="mm">600</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="ry" type="double" unit="mm">0</d>
+                </ble>
+                <ble id="QV-020" model="Quad410" type="quad" disc="BMD">
+                    <d id="l" type="double" unit="mm">410</d>
+                    <d id="g" type="double" unit="T/m">g2</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                </ble>
+                <ble id="DRF-030" type="drift">
+                    <d id="l" type="double" unit="mm">256.2</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="ry" type="double" unit="mm">0</d>
+                </ble>
+            </slotModel>
+             <slotModel id="HebtDrift" >
+				<infolink id="HebtDrift" type="slot">https://chess.esss.lu.se/enovia/tvc-action/showObject/dmg_Information/ESS-0025633/valid</infolink>
+                <ble id="DRF-010" type="drift">
+                    <d id="l" type="double" unit="mm">1646.9</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="ry" type="double" unit="mm">0</d>
+                </ble>
+                <ble id="DRF-020" type="drift">
+                    <d id="l" type="double" unit="mm">1646.9</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="ry" type="double" unit="mm">0</d>
+                </ble>
+                <ble id="DRF-030" type="drift">
+                    <d id="l" type="double" unit="mm">1646.9</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="ry" type="double" unit="mm">0</d>
+                </ble>
+                <ble id="DRF-040" type="drift">
+                    <d id="l" type="double" unit="mm">1646.9</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="ry" type="double" unit="mm">0</d>
+                </ble>
+            </slotModel>
+            <slotModel id="DoglegLwu">
+				<infolink id="DoglegLwu" type="slot">https://chess.esss.lu.se/enovia/tvc-action/showObject/dmg_Information/ESS-0025633/valid</infolink>
+                <var id="g1" type="double"/>
+                <var id="g2" type="double"/>
+                <var id="xkick" type="double"/>
+                <var id="ykick" type="double"/>
+                <ble id="DRF-010" type="drift">
+                    <d id="l" type="double" unit="mm">256.2</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                    <d id="ry" type="double" unit="mm">0.0</d>
+                </ble>
+                <ble id="QH-010" model="Quad410" type="quad" disc="BMD">
+                    <d id="l" type="double" unit="mm">410.0</d>
+                    <d id="g" type="double" unit="T/m">g1</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                </ble>
+                 <ble disc="BMD" id="COR-010" model="ElpTrim" type="thinSteering">
+                    <d id="xkick" type="double" unit="Tm">xkick</d>
+                    <d id="ykick" type="double" unit="Tm">ykick</d>
+                    <d id="r" type="double" unit="mm">50</d>
+                    <d id="kickType" type="double" unit="unit">0</d>
+                </ble>
+               <ble id="DRF-020" type="drift">
+                    <d id="l" type="double" unit="mm">1000.0</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                    <d id="ry" type="double" unit="mm">0.0</d>
+                </ble>
+                <ble id="QV-020" model="Quad410" type="quad" disc="BMD">
+                    <d id="l" type="double" unit="mm">410.0</d>
+                    <d id="g" type="double" unit="T/m">g2</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                </ble>
+                <ble id="DRF-030" type="drift">
+                    <d id="l" type="double" unit="mm">256.2</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                    <d id="ry" type="double" unit="mm">0.0</d>
+                </ble>
+            </slotModel>
+            <slotModel id="DogLegShortDrift">
+				<infolink id="DogLegShortDrift" type="slot">https://chess.esss.lu.se/enovia/tvc-action/showObject/dmg_Information/ESS-0025633/valid</infolink>
+                <var id="lengthmm" type="double"/>
+                <ble id="DRF-010" type="drift">
+                    <d id="l" type="double" unit="mm">lengthmm</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                    <d id="ry" type="double" unit="mm">0.0</d>
+                </ble>
+            </slotModel>
+            <slotModel id="DogLegLongDrift1">
+				<infolink id="DogLegLongDrift1" type="slot">https://chess.esss.lu.se/enovia/tvc-action/showObject/dmg_Information/ESS-0025633/valid</infolink>
+                <ble id="DRF-010" type="drift">
+                    <d id="l" type="double" unit="mm">8419.17</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                    <d id="ry" type="double" unit="mm">0.0</d>
+                </ble>
+            </slotModel>
+            <slotModel id="DogLegLongDrift2">
+				<infolink id="DogLegLongDrift2" type="slot">https://chess.esss.lu.se/enovia/tvc-action/showObject/dmg_Information/ESS-0025633/valid</infolink>
+                <ble id="DRF-010" type="drift">
+                    <d id="l" type="double" unit="mm">6298.867</d>
+                    <d id="r" type="double" unit="mm">50.0</d>
+                    <d id="ry" type="double" unit="mm">0.0</d>
+                </ble>
+            </slotModel>
+            <slotModel id="DogLegDipole">
+				<infolink id="DogLegDipole" type="slot">https://chess.esss.lu.se/enovia/tvc-action/showObject/dmg_Information/ESS-0025633/valid</infolink>
+                <var id="bendAngleDeg" type="double"/>
+                <var id="poleFaceAngleDeg" type="double"/>
+                <var id="radOfCurvmm" type="double"/>
+                <ble id="EDG-010" type="edge">
+                    <d id="poleFaceAngleDeg" type="double" unit="deg">poleFaceAngleDeg</d>
+                    <d id="radOfCurvmm" type="double" unit="mm">radOfCurvmm</d>
+                    <d id="gapmm" type="double" unit="mm">100.0</d>
+                    <d id="K1" type="double" unit="unit">0.45</d>
+                    <d id="K2" type="double" unit="unit">2.8</d>
+                    <d id="aperRadmm" type="double" unit="mm">50.0</d>
+                    <d id="HVflag" type="int" unit="unit">1</d>
+                </ble>
+                <ble id="BND-010" type="bend" model="DoglegBend" disc="BMD">
+                    <d id="bendAngleDeg" type="double" unit="deg">bendAngleDeg</d>
+                    <d id="radOfCurvmm" type="double" unit="mm">radOfCurvmm</d>
+                    <d id="fieldIndex" type="int" unit="unit">0</d>
+                    <d id="aperRadmm" type="double" unit="mm">50.0</d>
+                    <d id="HVflag" type="int" unit="unit">1</d>
+                    <d id="K1in" type="double" unit="unit">0.0</d>
+                    <d id="K2in" type="double" unit="unit">0.0</d>
+                    <d id="K1out" type="double" unit="unit">0.0</d>
+                    <d id="K2out" type="double" unit="unit">0.0</d>
+                </ble>
+                <ble id="EDG-020" type="edge">
+                    <d id="poleFaceAngleDeg" type="double" unit="deg">poleFaceAngleDeg</d>
+                    <d id="radOfCurvmm" type="double" unit="mm">radOfCurvmm</d>
+                    <d id="gapmm" type="double" unit="mm">100.0</d>
+                    <d id="K1" type="double" unit="unit">0.45</d>
+                    <d id="K2" type="double" unit="unit">2.8</d>
+                    <d id="aperRadmm" type="double" unit="mm">50.0</d>
+                    <d id="HVflag" type="int" unit="unit">1</d>
+                </ble>
+            </slotModel>
+       </slotModels>
+        <cellModels id="HebtCellModels">
+            <cellModel id="HebtCell">
+                <var id="g1" type="double"/>
+                <var id="g2" type="double"/>
+                <var id="xkick" type="double"/>
+                <var id="ykick" type="double"/>
+                <slot id="LWU" model="HebtLwu">
+                    <d id="g1" type="double">g1</d>
+                    <d id="g2" type="double">g2</d>
+                    <d id="xkick" type="double">xkick</d>
+                    <d id="ykick" type="double">ykick</d>
+                </slot>
+                <slot id="DRF" model="HebtDrift"/>
+            </cellModel>
+            <cellModel id="DoglegCellType1">
+                <var id="g1" type="double"/>
+                <var id="g2" type="double"/>
+                <var id="xkick" type="double"/>
+                <var id="ykick" type="double"/>
+                <slot id="LWU" model="HebtLwu">
+                    <d id="g1" type="double">g1</d>
+                    <d id="g2" type="double">g2</d>
+                    <d id="xkick" type="double">xkick</d>
+                    <d id="ykick" type="double">ykick</d>
+                </slot>
+                <slot id="DRF" model="DogLegShortDrift">
+                    <d id="lengthmm" type="double">720.3</d>
+                </slot>
+                <slot id="BND" model="DogLegDipole">
+                    <d id="bendAngleDeg" type="double">-4.0</d>
+                    <d id="poleFaceAngleDeg" type="double">2.0</d>
+                    <d id="radOfCurvmm" type="double">25783.1</d>
+                </slot>
+                <slot id="DRF" model="DogLegLongDrift2"/>
+            </cellModel>
+            <cellModel id="DoglegCellType2">
+                <var id="g1" type="double"/>
+                <var id="g2" type="double"/>
+                <var id="xkick" type="double"/>
+                <var id="ykick" type="double"/>
+                <slot id="LWU" model="DoglegLwu">
+                    <d id="g1" type="double">g1</d>
+                    <d id="g2" type="double">g2</d>
+                    <d id="xkick" type="double">xkick</d>
+                    <d id="ykick" type="double">ykick</d>
+                </slot>
+                <slot id="DRF" model="DogLegLongDrift1"/>
+            </cellModel>
+            <cellModel id="DoglegCellType3">
+                <var id="g1" type="double"/>
+                <var id="g2" type="double"/>
+                <var id="xkick" type="double"/>
+                <var id="ykick" type="double"/>
+                <slot id="LWU" model="DoglegLwu">
+                    <d id="g1" type="double">g1</d>
+                    <d id="g2" type="double">g2</d>
+                    <d id="xkick" type="double">xkick</d>
+                    <d id="ykick" type="double">ykick</d>
+                </slot>
+                <slot id="DRF" model="DogLegShortDrift">
+                    <d id="lengthmm" type="double">320.3</d>
+                </slot>
+                <slot id="BND" model="DogLegDipole">
+                    <d id="bendAngleDeg" type="double">4.0</d>
+                    <d id="poleFaceAngleDeg" type="double">2.0</d>
+                    <d id="radOfCurvmm" type="double">25783.1</d>
+                </slot>
+            </cellModel>
+       </cellModels>
+ 		<legoSets id="highBetaLegoSets">
+			<legoSet section="HEBT" cell="010" dataId="g1" devName="HEBT-010LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="020" dataId="g1" devName="HEBT-020LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="030" dataId="g1" devName="HEBT-030LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="040" dataId="g1" devName="HEBT-040LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="050" dataId="g1" devName="HEBT-050LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="060" dataId="g1" devName="HEBT-060LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="070" dataId="g1" devName="HEBT-070LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="080" dataId="g1" devName="HEBT-080LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="090" dataId="g1" devName="HEBT-090LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="100" dataId="g1" devName="HEBT-100LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="110" dataId="g1" devName="HEBT-110LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="120" dataId="g1" devName="HEBT-120LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="130" dataId="g1" devName="HEBT-130LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="140" dataId="g1" devName="HEBT-140LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="150" dataId="g1" devName="HEBT-150LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="160" dataId="g1" devName="HEBT-160LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="170" dataId="g1" devName="HEBT-170LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="180" dataId="g1" devName="HEBT-180LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="190" dataId="g1" devName="HEBT-190LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="200" dataId="g1" devName="HEBT-200LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="210" dataId="g1" devName="HEBT-210LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="220" dataId="g1" devName="HEBT-220LWU:PWRC-PSQH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+
+			<legoSet section="HEBT" cell="010" dataId="g2" devName="HEBT-010LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="020" dataId="g2" devName="HEBT-020LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="030" dataId="g2" devName="HEBT-030LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="040" dataId="g2" devName="HEBT-040LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="050" dataId="g2" devName="HEBT-050LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="060" dataId="g2" devName="HEBT-060LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="070" dataId="g2" devName="HEBT-070LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="080" dataId="g2" devName="HEBT-080LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="090" dataId="g2" devName="HEBT-090LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="100" dataId="g2" devName="HEBT-100LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="110" dataId="g2" devName="HEBT-110LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="120" dataId="g2" devName="HEBT-120LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="130" dataId="g2" devName="HEBT-130LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="140" dataId="g2" devName="HEBT-140LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="150" dataId="g2" devName="HEBT-150LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="160" dataId="g2" devName="HEBT-160LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="170" dataId="g2" devName="HEBT-170LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="180" dataId="g2" devName="HEBT-180LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="190" dataId="g2" devName="HEBT-190LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="200" dataId="g2" devName="HEBT-200LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="210" dataId="g2" devName="HEBT-210LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="220" dataId="g2" devName="HEBT-220LWU:PWRC-PSQV-020.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+
+			<legoSet section="HEBT" cell="010" dataId="xkick" devName="HEBT-010LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="020" dataId="xkick" devName="HEBT-020LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="030" dataId="xkick" devName="HEBT-030LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="040" dataId="xkick" devName="HEBT-040LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="050" dataId="xkick" devName="HEBT-050LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="060" dataId="xkick" devName="HEBT-060LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="070" dataId="xkick" devName="HEBT-070LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="080" dataId="xkick" devName="HEBT-080LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="090" dataId="xkick" devName="HEBT-090LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="100" dataId="xkick" devName="HEBT-100LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="110" dataId="xkick" devName="HEBT-110LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="120" dataId="xkick" devName="HEBT-120LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="130" dataId="xkick" devName="HEBT-130LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="140" dataId="xkick" devName="HEBT-140LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="150" dataId="xkick" devName="HEBT-150LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="160" dataId="xkick" devName="HEBT-160LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="170" dataId="xkick" devName="HEBT-170LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="180" dataId="xkick" devName="HEBT-180LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="190" dataId="xkick" devName="HEBT-190LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="200" dataId="xkick" devName="HEBT-200LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="210" dataId="xkick" devName="HEBT-210LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="220" dataId="xkick" devName="HEBT-220LWU:PWRC-PSCH-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+
+			<legoSet section="HEBT" cell="010" dataId="ykick" devName="HEBT-010LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="020" dataId="ykick" devName="HEBT-020LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="030" dataId="ykick" devName="HEBT-030LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="040" dataId="ykick" devName="HEBT-040LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="050" dataId="ykick" devName="HEBT-050LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="060" dataId="ykick" devName="HEBT-060LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="070" dataId="ykick" devName="HEBT-070LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="080" dataId="ykick" devName="HEBT-080LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="090" dataId="ykick" devName="HEBT-090LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="100" dataId="ykick" devName="HEBT-100LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="110" dataId="ykick" devName="HEBT-110LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="120" dataId="ykick" devName="HEBT-120LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="130" dataId="ykick" devName="HEBT-130LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="140" dataId="ykick" devName="HEBT-140LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="150" dataId="ykick" devName="HEBT-150LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="160" dataId="ykick" devName="HEBT-160LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="170" dataId="ykick" devName="HEBT-170LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="180" dataId="ykick" devName="HEBT-180LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="190" dataId="ykick" devName="HEBT-190LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="200" dataId="ykick" devName="HEBT-200LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="210" dataId="ykick" devName="HEBT-210LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+			<legoSet section="HEBT" cell="220" dataId="ykick" devName="HEBT-220LWU:PWRC-PSCV-010.CURR" type="double" unit="Amps" tf0="0" tf1="1.0" />
+
+		</legoSets>
+ 		<legoMonitors id="HebtLegoMonitors">
+			<legoMonitor section="HEBT" cell="010" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="020" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="030" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="040" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="050" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="060" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="070" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="080" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="090" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="100" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="110" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="120" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="130" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="140" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="150" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="160" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="170" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="180" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="190" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="200" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="210" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="220" slot="LWU" ble="QH-010" disc="PBI" id="BPM-010" type="BPM" model="ElpBpm"/>
+
+			<legoMonitor section="HEBT" cell="010" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="020" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="030" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="040" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="050" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="060" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="070" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="080" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="090" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="100" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="110" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="120" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="130" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="140" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="150" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="160" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="170" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="180" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="190" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="200" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="210" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+			<legoMonitor section="HEBT" cell="220" slot="LWU" ble="QV-020" disc="PBI" id="BPM-020" type="BPM" model="ElpBpm"/>
+
+			<legoMonitor section="HEBT" cell="010" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="020" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="030" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="040" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="050" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="060" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="070" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="080" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="090" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="100" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="110" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="120" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="130" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="140" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="150" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="160" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="170" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="180" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="190" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="200" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="210" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+			<legoMonitor section="HEBT" cell="220" slot="LWU" ble="DRF-020" disc="PBI" id="BLM-010" type="BLM" model="Blm"/>
+
+			<legoMonitor section="HEBT" cell="010" slot="LWU" ble="DRF-020" disc="PBI" id="BSM-010" type="BSM" model="ElpBsm"/>
+			<legoMonitor section="HEBT" cell="010" slot="LWU" ble="DRF-020" disc="PBI" id="BCM-010" type="BCM" model="ElpBcm"/>
+
+			<legoMonitor section="HEBT" cell="090" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-010" type="WSC" model="FlyWscH"/>
+			<legoMonitor section="HEBT" cell="090" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-020" type="WSC" model="FlyWscV"/>
+			<legoMonitor section="HEBT" cell="100" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-010" type="WSC" model="FlyWscH"/>
+			<legoMonitor section="HEBT" cell="100" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-020" type="WSC" model="FlyWscV"/>
+			<legoMonitor section="HEBT" cell="110" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-010" type="WSC" model="FlyWscH"/>
+			<legoMonitor section="HEBT" cell="110" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-020" type="WSC" model="FlyWscV"/>
+			<legoMonitor section="HEBT" cell="120" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-010" type="WSC" model="FlyWscH"/>
+			<legoMonitor section="HEBT" cell="120" slot="DRF" ble="DRF-020" disc="PBI" id="WSC-020" type="WSC" model="FlyWscV"/>
+			<legoMonitor section="HEBT" cell="120" slot="DRF" ble="DRF-020" disc="PBI" id="NPM-010" type="NPM" model="HebtBif"/>
+			<legoMonitor section="HEBT" cell="150" slot="LWU" ble="DRF-020" disc="PBI" id="BCM-010" type="BCM" model="ElpBcm"/>
+			
+		</legoMonitors >
+   </header>
+    <linac>
+        <linacData>
+            <d id="ekin" type="double" unit="MeV">1995.0</d>
+            <d id="beamFrequency" type="double" unit="MHz">352.21</d>
+            <d id="xSurvey" type="double" unit="m">0.0</d>
+            <d id="ySurvey" type="double" unit="m">0.0</d>
+            <d id="zSurvey" type="double" unit="m">0.0</d>
+            <d id="pitchSurvey" type="double" unit="deg">0.0</d>
+            <d id="rollSurvey" type="double" unit="deg">0.0</d>
+            <d id="yawSurvey" type="double" unit="deg">0.0</d>
+			<d id="alphaX" type="double" unit="unit">0.0</d>
+			<d id="betaX" type="double" unit="mm/pi.mrad">0.0</d>
+			<d id="emitX" type="double" unit="pi.mm.mrad">0.0</d>
+			<d id="alphaY" type="double" unit="unit">0.0</d>
+			<d id="betaY" type="double" unit="mm/pi.mrad">0.0</d>
+			<d id="emitY" type="double" unit="pi.mm.mrad">0.0</d>
+			<d id="alphaZ" type="double" unit="unit">0.0</d>
+			<d id="betaZ" type="double" unit="mm/pi.mrad">0.0</d>
+			<d id="emitZ" type="double" unit="pi.mm.mrad">0.0</d>
+            <d id="beamCurrent" type="double" unit="mA">0.0</d>
+        </linacData>
+        <section id="HEBT" rfHarmonic="2">
+            <cell id="010" model="HebtCell">
+                <d id="g1" type="double">3.26892</d>
+                <d id="g2" type="double">-3.26892</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="020" model="HebtCell">
+                <d id="g1" type="double">3.60304</d>
+                <d id="g2" type="double">-3.60304</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="030" model="HebtCell">
+                <d id="g1" type="double">3.71754</d>
+                <d id="g2" type="double">-3.71754</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="040" model="HebtCell">
+                <d id="g1" type="double">3.832</d>
+                <d id="g2" type="double">-3.832</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="050" model="HebtCell">
+                <d id="g1" type="double">3.94623</d>
+                <d id="g2" type="double">-3.94623</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="060" model="HebtCell">
+                <d id="g1" type="double">4.0603</d>
+                <d id="g2" type="double">-4.0603</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="070" model="HebtCell">
+                <d id="g1" type="double">4.17418</d>
+                <d id="g2" type="double">-4.17418</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="080" model="HebtCell">
+                <d id="g1" type="double">4.28785</d>
+                <d id="g2" type="double">-4.28785</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="090" model="HebtCell">
+                <d id="g1" type="double">4.4014</d>
+                <d id="g2" type="double">-4.4014</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="100" model="HebtCell">
+                <d id="g1" type="double">4.51468</d>
+                <d id="g2" type="double">-4.51468</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="110" model="HebtCell">
+                <d id="g1" type="double">4.62787</d>
+                <d id="g2" type="double">-4.62787</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="120" model="HebtCell">
+                <d id="g1" type="double">4.62787</d>
+                <d id="g2" type="double">-4.62787</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="130" model="HebtCell">
+                <d id="g1" type="double">4.62787</d>
+                <d id="g2" type="double">-4.62787</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="140" model="HebtCell">
+                <d id="g1" type="double">4.62787</d>
+                <d id="g2" type="double">-4.62787</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="150" model="HebtCell">
+                <d id="g1" type="double">4.62787</d>
+                <d id="g2" type="double">-4.62787</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+             <cell id="160" model="DoglegCellType1">
+                <d id="g1" type="double">4.62783</d>
+                <d id="g2" type="double">-4.62783</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="170" model="DoglegCellType2">
+                <d id="g1" type="double">6.6757</d>
+                <d id="g2" type="double">-6.65</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="180" model="DoglegCellType2">
+                <d id="g1" type="double">6.6757</d>
+                <d id="g2" type="double">-6.65</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="190" model="DoglegCellType2">
+                <d id="g1" type="double">6.6757</d>
+                <d id="g2" type="double">-6.65</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="200" model="DoglegCellType2">
+                <d id="g1" type="double">6.6757</d>
+                <d id="g2" type="double">-6.65</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="210" model="DoglegCellType2">
+                <d id="g1" type="double">6.6757</d>
+                <d id="g2" type="double">-6.65</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+            <cell id="220" model="DoglegCellType3">
+                <d id="g1" type="double">6.6757</d>
+                <d id="g2" type="double">-6.65</d>
+                <d id="xkick" type="double">0.0</d>
+                <d id="ykick" type="double">0.0</d>
+            </cell>
+      </section>
+    </linac>
+</linacLego>
+

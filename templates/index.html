@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+{% block title %}ESS Linac Parameter Book{% endblock %}
+{% block content %}
+		<ul class="nav nav-tabs">
+	        <li class="nav active"><a href="#info" data-toggle="tab">Info</a></li>
+		    <li role="presentation" class="dropdown">
+		      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+		        PBS <span class="caret"></span>
+		      </a>
+			  <ul class="dropdown-menu" role="menu">
+		        <li class="nav"><a href="#pbsLayout" data-toggle="tab">PBS Layout</a></li>
+				<li class="nav"><a href="#pbsTree" data-toggle="tab">PBS Tree</a></li>
+		      </ul>
+		    </li>
+	        <li class="nav"><a href="#xmlTree" data-toggle="tab">XML Tree</a></li>
+		    <li role="presentation" class="dropdown">
+		      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+		        Data <span class="caret"></span>
+		      </a>
+			  <ul class="dropdown-menu" role="menu">
+		        <li class="nav"><a href="#sectionData" data-toggle="tab">Section data</a></li>
+		        <li class="nav"><a href="#cellData" data-toggle="tab">Cell data</a></li>
+		        <li class="nav"><a href="#slotData" data-toggle="tab">Slot data</a></li>
+		        <li class="nav"><a href="#bleData" data-toggle="tab">BLE data</a></li>
+		        <li class="nav"><a href="#monitorData" data-toggle="tab">Monitor data</a></li>
+		      </ul>
+		    </li>
+		    <li role="presentation" class="dropdown">
+		      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+		        Parts <span class="caret"></span>
+		      </a>
+			  <ul class="dropdown-menu" role="menu">
+		        <li class="nav"><a href="#cellParts" data-toggle="tab">Cell Parts</a></li>
+		        <li class="nav"><a href="#slotParts" data-toggle="tab">Slot Parts</a></li>
+		        <li class="nav"><a href="#bleParts" data-toggle="tab">Beam-line Parts</a></li>
+		        <li class="nav"><a href="#monitorParts" data-toggle="tab">Monitor Parts</a></li>
+		      </ul>
+		    </li>
+	        <li class="nav"><a href="#legoSets" data-toggle="tab">Lego Sets</a></li>
+	        <li class="nav"><a href="#plots" data-toggle="tab">Plots</a></li>
+		    
+	    </ul>
+
+	    <!-- Tab panes -->
+	    <div class="tab-content">
+	        <div class="tab-pane fade in active" id="info">
+				<div class="row">
+					<p></p>
+					<div class="col-md-4">
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">ESS Linac Parameter Book v.X.X</h3>
+						  </div>
+						  <div class="panel-body">
+						    Last Updated May 22, 2015
+						  </div>
+						</div>
+						<div class="panel panel-default">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Downloads</h3>
+						  </div>
+						  <ul class="list-group">
+						    <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/master/xml/linacLego.zip">Download XML files</a></li>
+						    <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/master/doc/LinacLegoManual.pdf">LinacLego Manual</a></li>
+						    <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/master/dist/LinacLegoApp.jar">LinacLego Application</a></li>
+						    <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/master/">Source Web Folder</a></li>
+						  </ul>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Lattice Version</h3>
+						  </div>
+						  <div class="panel-body">
+						    Blah
+						  </div>
+						</div>
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Reload Source</h3>
+						  </div>
+						  <div class="panel-body">
+							<p>Dummy buttons</p>
+							<div class="btn-group" role="group" aria-label="...">
+								<button type="button" class="btn btn-l btn-success">Master</button>
+								<button type="button" class="btn btn-l btn-warning">Development</button>
+								<button type="button" class="btn btn-l btn-danger">Fictional</button>
+							</div>
+						  </div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Drawing Index</h3>
+						  </div>
+						  <table class="table">
+						        <thead>
+						          <tr>
+						            <th>Type</th>
+						            <th>Id</th>
+						          </tr>
+						        </thead>
+						        <tbody>
+						          <tr>
+						            <td>linac</td>
+						            <td>LinacCF</td>
+						          </tr>
+						          <tr>
+						            <td>slot</td>
+						            <td>TestSlot</td>
+						          </tr>
+						          <tr>
+						            <td>slot</td>
+						            <td>Isrc</td>
+						          </tr>
+						        </tbody>
+						      </table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="pbsLayout">
+				Contents of the pbsLayout tab
+			</div>
+			<div class="tab-pane fade" id="pbsTree">Content inside tab pbsTree</div>
+			<div class="tab-pane fade" id="xmlTree">Content inside tab xmlTree</div>
+			<div class="tab-pane fade" id="sectionData">
+				<table data-toolbar="#toolbar" 
+					   data-toggle="table" 
+					   data-search="true" 
+					   data-show-columns="true" 
+					   data-show-export="true" 
+					   data-url="api/v1/lattices/latest/sections">
+				       <thead>
+				           <tr>
+				               <th data-field="Section">Section</th>
+				               <th data-field="eVout">eVout (MeV)</th>
+				               <th data-field="Length">Length (m)</th>
+				               <th data-field="Xend">Xend (m)</th>
+				               <th data-field="Yend">Yend (m)</th>
+				               <th data-field="Zend">Zend (m)</th>
+				               <th data-field="Xsur">Xsur (m)</th>
+				               <th data-field="Ysur">Ysur (m)</th>
+				               <th data-field="Zsur">Zsur (m)</th>
+				           </tr>
+				       </thead>
+				</table>
+			</div>
+	        <div class="tab-pane fade" id="cellData">
+				<table data-toolbar="#toolbar" 
+					   data-toggle="table" 
+					   data-search="true" 
+					   data-show-columns="true" 
+					   data-url="api/v1/lattices/latest/cells">
+				    <thead>
+				        <tr>
+				            <th data-field="Section">Section</th>
+				            <th data-field="Cell">Cell</th>
+				            <th data-field="Model">Model</th>
+				            <th data-field="eVout">eVout (MeV)</th>
+				            <th data-field="Length">Length (m)</th>
+				            <th data-field="Xend">Xend (m)</th>
+				            <th data-field="Yend">Yend (m)</th>
+				            <th data-field="Zend">Zend (m)</th>
+				            <th data-field="Xsur">Xsur (m)</th>
+				            <th data-field="Ysur">Ysur (m)</th>
+				            <th data-field="Zsur">Zsur (m)</th>
+				        </tr>
+				    </thead>
+				</table>
+			</div>
+	        <div class="tab-pane fade" id="slotData">
+				<table data-toolbar="#toolbar" 
+					   data-toggle="table" 
+					   data-search="true" 
+					   data-show-columns="true" 
+					   data-url="api/v1/lattices/latest/slots">
+				    <thead>
+				        <tr>
+				            <th data-field="Section">Section</th>
+				            <th data-field="Cell">Cell</th>
+				            <th data-field="Slot">Slot</th>
+				            <th data-field="Model">Model</th>
+				            <th data-field="eVout">eVout (MeV)</th>
+				            <th data-field="Length">Length (m)</th>
+				            <th data-field="Xend">Xend (m)</th>
+				            <th data-field="Yend">Yend (m)</th>
+				            <th data-field="Zend">Zend (m)</th>
+				            <th data-field="Xsur">Xsur (m)</th>
+				            <th data-field="Ysur">Ysur (m)</th>
+				            <th data-field="Zsur">Zsur (m)</th>
+				        </tr>
+				    </thead>
+				</table>
+			</div>
+	        <div class="tab-pane fade" id="bleData">
+				<table data-toolbar="#toolbar" 
+					   data-toggle="table" 
+					   data-search="true" 
+					   data-show-columns="true" 
+					   data-url="api/v1/lattices/latest/bles">
+				    <thead>
+				        <tr>
+				            <th data-field="Section">Section</th>
+				            <th data-field="Cell">Cell</th>
+				            <th data-field="Slot">Slot</th>
+				            <th data-field="BLE">BLE</th>
+				            <th data-field="Type">Type</th>
+				            <th data-field="Model">Model</th>
+				            <th data-field="Disc">Disc</th>
+				            <th data-field="Name">Name</th>
+				            <th data-field="eVout">eVout (MeV)</th>
+				            <th data-field="Length">Length (m)</th>
+				            <th data-field="Xend">Xend (m)</th>
+				            <th data-field="Yend">Yend (m)</th>
+				            <th data-field="Zend">Zend (m)</th>
+				            <th data-field="Xsur">Xsur (m)</th>
+				            <th data-field="Ysur">Ysur (m)</th>
+				            <th data-field="Zsur">Zsur (m)</th>
+				            <th data-field="VT">VT</th>
+				            <th data-field="PhiS">PhiS</th>
+				            <th data-field="G">G</th>
+				            <th data-field="Theta">Theta</th>
+				        </tr>
+				    </thead>
+				</table>
+			</div>
+	        <div class="tab-pane fade" id="monitorData">
+				<table data-toolbar="#toolbar" 
+					   data-toggle="table" 
+					   data-search="true" 
+					   data-show-columns="true" 
+					   data-url="api/v1/lattices/latest/monitors">
+				    <thead>
+				        <tr>
+				            <th data-field="Section">Section</th>
+				            <th data-field="Cell">Cell</th>
+				            <th data-field="Slot">Slot</th>
+				            <th data-field="BLE">BLE</th>
+				            <th data-field="MON">MON</th>
+				            <th data-field="Type">Type</th>
+				            <th data-field="Model">Model</th>
+				            <th data-field="Disc">Disc</th>
+				            <th data-field="Name">Name</th>
+				            <th data-field="eVout">eVout (MeV)</th>
+				            <th data-field="Length">Length (m)</th>
+				            <th data-field="Xend">Xend (m)</th>
+				            <th data-field="Yend">Yend (m)</th>
+				            <th data-field="Zend">Zend (m)</th>
+				            <th data-field="Xsur">Xsur (m)</th>
+				            <th data-field="Ysur">Ysur (m)</th>
+				            <th data-field="Zsur">Zsur (m)</th>
+				        </tr>
+				    </thead>
+				</table>
+			</div>
+	        <div class="tab-pane fade" id="cellParts">Content inside tab cellParts</div>
+	        <div class="tab-pane fade" id="slotParts">Content inside tab slotParts</div>
+	        <div class="tab-pane fade" id="bleParts">Content inside tab bleParts</div>
+	        <div class="tab-pane fade" id="monitorParts">Content inside tab monitorParts</div>
+	        <div class="tab-pane fade" id="legoSets">Content inside tab legoSets</div>
+	        <div class="tab-pane fade" id="plots">
+				<p></p>
+				<div class="row">
+		        	<div class="col-md-4">
+						<div class="panel panel-default">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Chose the plot</h3>
+						  </div>
+						  <ul class="list-group">
+						    <li class="list-group-item"><a href="#">Cavity power ( kW )</a></li>
+						    <li class="list-group-item"><a href="#">Energy ( MeV )</a></li>
+						    <li class="list-group-item"><a href="#">Envelopes</a></li>
+						    <li class="list-group-item"><a href="#">Field Map Factors</a></li>
+						    <li class="list-group-item"><a href="#">Gradient</a></li>
+						    <li class="list-group-item"><a href="#">Halo</a></li>
+						    <li class="list-group-item"><a href="#">Integral of Gradient</a></li>
+						    <li class="list-group-item"><a href="#">Longitudianl emittance ( Pi.deg.MeV )</a></li>
+						    <li class="list-group-item"><a href="#">Norm. 4D_6D rms emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="#">Norm. rms emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="#">Period length ( m )</a></li>
+						    <li class="list-group-item"><a href="#">Synchronous phase (deg)</a></li>
+						    <li class="list-group-item"><a href="#">Tune depression</a></li>
+						  </ul>
+						</div>
+					</div>
+		        	<div class="col-md-8">
+						<div id="plotlyPlots">
+						    <a href="https://plot.ly/~ess/115/" target="_blank" title="Tune depression Plot" style="display: block; text-align: center;"><img src="https://plot.ly/~ess/115.png" alt="Tune depression Plot" style="max-width: 100%;width: 757px;"  width="757" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+						    <script data-plotly="ess:115" src="https://plot.ly/embed.js" async></script>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </div>
+		<div class="row">
+			<p></p>
+			<p class="text-center"><small>Version pre-alpha</small></p>
+		</div>
+{% endblock %}
