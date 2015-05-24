@@ -2,9 +2,9 @@ from flask import Flask, request, render_template, jsonify
 from flask.ext.restful import reqparse, abort, Api, Resource
 
 from urllib2 import urlopen
-
 import csv
 import json
+
 import xmltodict
 
 ##
@@ -193,6 +193,71 @@ def abort_if_monitor_doesnt_exist(lattice_id, section_id, cell_id, slot_id, ble_
         abort(404, message='Monitor {} doesn\'t exist'.format(monitor_id))
 
 ##
+## Data selection
+##
+
+def cellsBySection(section_id):
+    """Returns a list of the cells in the section"""
+    cells = [item for item in cellDataJson 
+        if item["Section"] == section_id]
+    return cells
+
+def slotsBySection(section_id):
+    """Returns a list of the slots in the section"""
+    slots = [item for item in slotDataJson 
+        if item["Section"] == section_id]
+    return slots
+
+def blesBySection(section_id):
+    """Returns a list of the slots in the section"""
+    bles = [item for item in bleDataJson 
+        if item["Section"] == section_id]
+    return bles
+
+def monitorsBySection(section_id):
+    """Returns a list of the slots in the section"""
+    monitors = [item for item in monitorDataJson 
+        if item["Section"] == section_id]
+    return monitors
+
+
+def slotsByCell(section_id, cell_id):
+    """Returns a list of the slots in the cell"""
+    slots = [item for item in slotDataJson 
+        if item["Section"] == section_id and item["Cell"] == cell_id]
+    return slots
+
+def blesByCell(section_id, cell_id):
+    """Returns a list of the slots in the cell"""
+    bles = [item for item in bleDataJson 
+        if item["Section"] == section_id and item["Cell"] == cell_id]
+    return bles
+
+def monitorsByCell(section_id, cell_id):
+    """Returns a list of the slots in the cell"""
+    monitors = [item for item in monitorDataJson 
+        if item["Section"] == section_id and item["Cell"] == cell_id]
+    return monitors
+
+def blesBySlot(section_id, cell_id, slot_id):
+    """Returns a list of the bles in the slot"""
+    bles = [item for item in bleDataJson 
+        if item["Section"] == section_id and item["Cell"] == cell_id and item["Slot"] == slot_id]
+    return bles
+
+def monitorsBySlot(section_id, cell_id, slot_id):
+    """Returns a list of the monitors in the slot"""
+    monitors = [item for item in monitorDataJson 
+        if item["Section"] == section_id and item["Cell"] == cell_id and item["Slot"] == slot_id]
+    return monitors
+
+def monitorsByBle(section_id, cell_id, slot_id, ble_id):
+    """Returns a list of the monitors in the ble"""
+    monitors = [item for item in monitorDataJson 
+        if item["Section"] == section_id and item["Cell"] == cell_id and item["Slot"] == slot_id and item["BLE"] == ble_id]
+    return monitors
+
+##
 ## API classes
 ##
 
@@ -235,28 +300,62 @@ class sections(Resource):
 class cells(Resource):
     def get(self, lattice_id='latest', section_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
-        return cellDataJson
+        if section_id == None:
+            return cellDataJson
+        else:
+            abort_if_section_doesnt_exist(lattice_id, section_id)
+            return cellsBySection(section_id)
 
 # slots
 #   show a list of slots
 class slots(Resource):
     def get(self, lattice_id='latest', section_id=None, cell_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
-        return slotDataJson
+        if section_id == None:
+            return slotDataJson
+        elif cell_id == None:
+            abort_if_section_doesnt_exist(lattice_id, section_id)
+            return slotsBySection(section_id)
+        else:
+            abort_if_cell_doesnt_exist(lattice_id, section_id, cell_id)
+            return slotsByCell(section_id, cell_id)
 
 # bles
 #   show a list of bles
 class bles(Resource):
     def get(self, lattice_id='latest', section_id=None, cell_id=None, slot_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
-        return bleDataJson
+        if section_id == None:
+            return bleDataJson
+        elif cell_id == None:
+            abort_if_section_doesnt_exist(lattice_id, section_id)
+            return blesBySection(section_id)
+        elif slot_id == None:
+            abort_if_cell_doesnt_exist(lattice_id, section_id, cell_id)
+            return blesByCell(section_id, cell_id)
+        else:
+            abort_if_slot_doesnt_exist(lattice_id, section_id, cell_id, slot_id)
+            return blesBySlot(section_id, cell_id, slot_id)
 
 # monitors
 #   show a list of monitors
 class monitors(Resource):
     def get(self, lattice_id='latest', section_id=None, cell_id=None, slot_id=None, ble_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
-        return monitorDataJson
+        if section_id == None:
+            return monitorDataJson
+        elif cell_id == None:
+            abort_if_section_doesnt_exist(lattice_id, section_id)
+            return monitorsBySection(section_id)
+        elif slot_id == None:
+            abort_if_cell_doesnt_exist(lattice_id, section_id, cell_id)
+            return monitorsByCell(section_id, cell_id)
+        elif ble_id == None:
+            abort_if_slot_doesnt_exist(lattice_id, section_id, cell_id, slot_id)
+            return monitorsBySlot(section_id, cell_id, slot_id)
+        else:
+            abort_if_ble_doesnt_exist(lattice_id, section_id, cell_id, slot_id, ble_id)
+            return monitorsByBle(section_id, cell_id, slot_id, ble_id)
 
 ##
 ## Instance classes
@@ -337,18 +436,18 @@ apiObject.add_resource(cells,
     '/api/v1/lattices/<lattice_id>/cells')
 apiObject.add_resource(slots, 
     '/api/v1/lattices/<lattice_id>/sections/<section_id>/cells/<cell_id>/slots',
-    '/api/v1/lattices/<lattice_id>/cells/<cell_id>/slots',
+    '/api/v1/lattices/<lattice_id>/sections/<section_id>/slots',
     '/api/v1/lattices/<lattice_id>/slots')
 apiObject.add_resource(bles, 
     '/api/v1/lattices/<lattice_id>/sections/<section_id>/cells/<cell_id>/slots/<slot_id>/bles', 
-    '/api/v1/lattices/<lattice_id>/cells/<cell_id>/slots/<slot_id>/bles', 
-    '/api/v1/lattices/<lattice_id>/slots/<slot_id>/bles', 
+    '/api/v1/lattices/<lattice_id>/sections/<section_id>/cells/<cell_id>/bles', 
+    '/api/v1/lattices/<lattice_id>/sections/<section_id>/bles', 
     '/api/v1/lattices/<lattice_id>/bles')
 apiObject.add_resource(monitors, 
     '/api/v1/lattices/<lattice_id>/sections/<section_id>/cells/<cell_id>/slots/<slot_id>/bles/<ble_id>/monitors', 
-    '/api/v1/lattices/<lattice_id>/cells/<cell_id>/slots/<slot_id>/bles/<ble_id>/monitors', 
-    '/api/v1/lattices/<lattice_id>/slots/<slot_id>/bles/<ble_id>/monitors', 
-    '/api/v1/lattices/<lattice_id>/bles/<ble_id>/monitors', 
+    '/api/v1/lattices/<lattice_id>/sections/<section_id>/cells/<cell_id>/slots/<slot_id>/monitors', 
+    '/api/v1/lattices/<lattice_id>/sections/<section_id>/cells/<cell_id>/monitors', 
+    '/api/v1/lattices/<lattice_id>/sections/<section_id>/monitors', 
     '/api/v1/lattices/<lattice_id>/monitors')
     
 # Instance resources
