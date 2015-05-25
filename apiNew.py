@@ -86,6 +86,7 @@ cellsFieldNames=["Section", "Cell", "Model", "eVout", "v/c", "Length", "Xend", "
 slotsFieldNames=["Section", "Cell", "Slot", "Model", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur", "Zsur"]
 blesFieldNames=["Section", "Cell", "Slot", "BLE", "Type", "Model", "Disc", "Name", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur", "Zsur", "VT", "PhiS", "G", "Theta"]
 monitorsFieldNames=["Section", "Cell", "Slot", "BLE", "MON", "Type", "Model", "Disc", "Name", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur"]
+infoLinksFieldNames = ["Type", "Id", "Link"]
 
 def convertData():
     """Loads the data from the source"""
@@ -95,11 +96,13 @@ def convertData():
     global slotDataJson
     global bleDataJson
     global monitorDataJson
+    global infoLinksDataJson
     sectionDataJson = convertCsv2Json(linacLegoSectionDataFile, sectionsFieldNames)
     cellDataJson = convertCsv2Json(linacLegoCellDataFile, cellsFieldNames)
     slotDataJson = convertCsv2Json(linacLegoSlotDataFile, slotsFieldNames)
     bleDataJson = convertCsv2Json(linacLegoBleDataFile, blesFieldNames)
     monitorDataJson = convertCsv2Json(linacLegoMonitorDataFile, monitorsFieldNames)
+    infoLinksDataJson = convertCsv2Json(linacLegoInfoLinksFile, infoLinksFieldNames)
 
     #sectionData2JsonFile = convert(linacLegoSectionDataFile, linacLegoSectionDataFileName, sectionsFieldNames)
     #cellData2JsonFile = convert(linacLegoCellDataFile, linacLegoCellDataFileName, cellsFieldNames)
@@ -357,6 +360,13 @@ class monitors(Resource):
             abort_if_ble_doesnt_exist(lattice_id, section_id, cell_id, slot_id, ble_id)
             return monitorsByBle(section_id, cell_id, slot_id, ble_id)
 
+# infoLinks
+#   show a list of infoLinks
+class infoLinks(Resource):
+    def get(self, lattice_id='latest'):
+        abort_if_lattice_doesnt_exist(lattice_id)
+        return infoLinksDataJson
+        
 ##
 ## Instance classes
 ##
@@ -449,6 +459,8 @@ apiObject.add_resource(monitors,
     '/api/v1/lattices/<lattice_id>/sections/<section_id>/cells/<cell_id>/monitors', 
     '/api/v1/lattices/<lattice_id>/sections/<section_id>/monitors', 
     '/api/v1/lattices/<lattice_id>/monitors')
+apiObject.add_resource(infoLinks, 
+    '/api/v1/lattices/<lattice_id>/infoLinks')
     
 # Instance resources
     

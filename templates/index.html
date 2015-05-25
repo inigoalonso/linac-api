@@ -10,9 +10,9 @@
 			  <ul class="dropdown-menu" role="menu">
 		        <li class="nav"><a href="#pbsLayout" data-toggle="tab">PBS Layout</a></li>
 				<li class="nav"><a href="#pbsTree" data-toggle="tab">PBS Tree</a></li>
+				<li class="nav"><a href="#xmlTree" data-toggle="tab">XML Tree</a></li>
 		      </ul>
 		    </li>
-	        <li class="nav"><a href="#xmlTree" data-toggle="tab">XML Tree</a></li>
 		    <li role="presentation" class="dropdown">
 		      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 		        Data <span class="caret"></span>
@@ -52,7 +52,7 @@
 						    <h3 class="panel-title">ESS Linac Parameter Book v.X.X</h3>
 						  </div>
 						  <div class="panel-body">
-						    Last Updated May 22, 2015
+						    Last Updated May 25, 2015
 						  </div>
 						</div>
 						<div class="panel panel-default">
@@ -74,7 +74,7 @@
 						    <h3 class="panel-title">Lattice Version</h3>
 						  </div>
 						  <div class="panel-body">
-						    Blah
+							<span class="gwt-InlineHTML"><span class="xmlTagLabel">linacLego</span><br><span class="xmlAttLabel"> comment=</span><span class="xmlAttValue">New HEBT and A2T drawings</span><br><span class="xmlAttLabel"> date=</span><span class="xmlAttValue">20-Apr-2015</span><br><span class="xmlAttLabel"> revNo=</span><span class="xmlAttValue">5.0</span><br><span class="xmlAttLabel"> title=</span><span class="xmlAttValue">EssLinac</span></span>
 						  </div>
 						</div>
 						<div class="panel panel-default">
@@ -96,28 +96,17 @@
 						  <div class="panel-heading">
 						    <h3 class="panel-title">Drawing Index</h3>
 						  </div>
-						  <table class="table">
-						        <thead>
-						          <tr>
-						            <th>Type</th>
-						            <th>Id</th>
-						          </tr>
-						        </thead>
-						        <tbody>
-						          <tr>
-						            <td>linac</td>
-						            <td>LinacCF</td>
-						          </tr>
-						          <tr>
-						            <td>slot</td>
-						            <td>TestSlot</td>
-						          </tr>
-						          <tr>
-						            <td>slot</td>
-						            <td>Isrc</td>
-						          </tr>
-						        </tbody>
-						      </table>
+			  				<table class="table"
+			  					data-toggle="table" 
+			  					data-url="api/v1/lattices/latest/infoLinks">
+			  				    <thead>
+			  				        <tr>
+			  				            <th data-field="Type">Type</th>
+			  				            <th data-field="Id">Id</th>
+			  				            <th data-field="Link">Link</th>
+			  				        </tr>
+			  				    </thead>
+			  				</table>
 						</div>
 					</div>
 				</div>
@@ -271,26 +260,26 @@
 						    <h3 class="panel-title">Chose the plot</h3>
 						  </div>
 						  <ul class="list-group">
-						    <li class="list-group-item"><a href="#">Cavity power ( kW )</a></li>
-						    <li class="list-group-item"><a href="#">Energy ( MeV )</a></li>
-						    <li class="list-group-item"><a href="#">Envelopes</a></li>
-						    <li class="list-group-item"><a href="#">Field Map Factors</a></li>
-						    <li class="list-group-item"><a href="#">Gradient</a></li>
-						    <li class="list-group-item"><a href="#">Halo</a></li>
-						    <li class="list-group-item"><a href="#">Integral of Gradient</a></li>
-						    <li class="list-group-item"><a href="#">Longitudianl emittance ( Pi.deg.MeV )</a></li>
-						    <li class="list-group-item"><a href="#">Norm. 4D_6D rms emittances ( Pi.mm.mrad )</a></li>
-						    <li class="list-group-item"><a href="#">Norm. rms emittances ( Pi.mm.mrad )</a></li>
-						    <li class="list-group-item"><a href="#">Period length ( m )</a></li>
-						    <li class="list-group-item"><a href="#">Synchronous phase (deg)</a></li>
-						    <li class="list-group-item"><a href="#">Tune depression</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(11);">Cavity power ( kW )</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(24);">Energy ( MeV )</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(31);">Envelopes</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(39);">Field Map Factors</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(52);">Gradient</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(59);">Halo</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(66);">Integral of Gradient</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(74);">Longitudianl emittance ( Pi.deg.MeV )</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(82);">Norm. 4D_6D rms emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(89);">Norm. 99percent emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(96);">Norm. rms emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(103);">Period length ( m )</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(109);">Synchronous phase (deg)</a></li>
+						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(115);">Tune depression</a></li>
 						  </ul>
 						</div>
 					</div>
 		        	<div class="col-md-8">
 						<div id="plotlyPlots">
-						    <a href="https://plot.ly/~ess/115/" target="_blank" title="Tune depression Plot" style="display: block; text-align: center;"><img src="https://plot.ly/~ess/115.png" alt="Tune depression Plot" style="max-width: 100%;width: 757px;"  width="757" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-						    <script data-plotly="ess:115" src="https://plot.ly/embed.js" async></script>
+						    Select a plot from the list on the left.
 						</div>
 					</div>
 				</div>
