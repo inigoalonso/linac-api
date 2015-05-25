@@ -38,6 +38,7 @@
 		    </li>
 	        <li class="nav"><a href="#legoSets" data-toggle="tab">Lego Sets</a></li>
 	        <li class="nav"><a href="#plots" data-toggle="tab">Plots</a></li>
+	        <li class="nav"><a href="#emittances" data-toggle="tab">Emittances</a></li>
 		    
 	    </ul>
 
@@ -96,17 +97,17 @@
 						  <div class="panel-heading">
 						    <h3 class="panel-title">Drawing Index</h3>
 						  </div>
-			  				<table class="table"
-			  					data-toggle="table" 
-			  					data-url="api/v1/lattices/latest/infoLinks">
-			  				    <thead>
-			  				        <tr>
-			  				            <th data-field="Type">Type</th>
-			  				            <th data-field="Id">Id</th>
-			  				            <th data-field="Link">Link</th>
-			  				        </tr>
-			  				    </thead>
-			  				</table>
+			  			  <table class="table"
+			  					 data-toggle="table" 
+			  					 data-url="api/v1/lattices/latest/infoLinks">
+			  			    <thead>
+			  				    <tr>
+			  				        <th data-field="Type">Type</th>
+			  				        <th data-field="Id">Id</th>
+			  				        <th data-field="Link">Link</th>
+			  				    </tr>
+			  				</thead>
+			  			  </table>
 						</div>
 					</div>
 				</div>
@@ -249,7 +250,30 @@
 	        <div class="tab-pane fade" id="slotParts">Content inside tab slotParts</div>
 	        <div class="tab-pane fade" id="bleParts">Content inside tab bleParts</div>
 	        <div class="tab-pane fade" id="monitorParts">Content inside tab monitorParts</div>
-	        <div class="tab-pane fade" id="legoSets">Content inside tab legoSets</div>
+	        <div class="tab-pane fade" id="legoSets">
+				<table data-toolbar="#toolbar" 
+					   data-toggle="table" 
+					   data-search="true"
+					   data-show-columns="true" 
+					   data-url="api/v1/lattices/latest/legoSets">
+				    <thead>
+				        <tr>
+							<th data-field="BLE devName">BLE devName</th>
+							<th data-field="BLE data">BLE data</th>
+							<th data-field="BLE value">BLE value</th>
+							<th data-field="BLE unit">BLE unit</th>
+							<th data-field="LinacSet devName">LinacSet devName</th>
+							<th data-field="LinacSet Value">LinacSet Value</th>
+							<th data-field="LinacSet Unit">LinacSet Unit</th>
+							<th data-field="TF 0">TF 0</th>
+							<th data-field="TF 1">TF 1</th>
+							<th data-field="TF 2">TF 2</th>
+							<th data-field="TF 3">TF 3</th>
+							<th data-field="TF 4">TF 4</th>
+				        </tr>
+				    </thead>
+				</table>
+			</div>
 	        <div class="tab-pane fade" id="plots">
 				<p></p>
 				<div class="row">
@@ -260,30 +284,57 @@
 						    <h3 class="panel-title">Chose the plot</h3>
 						  </div>
 						  <ul class="list-group">
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(11);">Cavity power ( kW )</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(24);">Energy ( MeV )</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(31);">Envelopes</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(39);">Field Map Factors</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(52);">Gradient</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(59);">Halo</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(66);">Integral of Gradient</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(74);">Longitudianl emittance ( Pi.deg.MeV )</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(82);">Norm. 4D_6D rms emittances ( Pi.mm.mrad )</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(89);">Norm. 99percent emittances ( Pi.mm.mrad )</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(96);">Norm. rms emittances ( Pi.mm.mrad )</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(103);">Period length ( m )</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(109);">Synchronous phase (deg)</a></li>
-						    <li class="list-group-item"><a href="javascript:void(0)" onclick="loadPlot(115);">Tune depression</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/11.embed?width=750&height=517.5" target="plotIframe">Cavity power ( kW )</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/24.embed?width=750&height=517.5" target="plotIframe">Energy ( MeV )</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/31.embed?width=750&height=517.5" target="plotIframe">Envelopes</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/39.embed?width=750&height=517.5" target="plotIframe">Field Map Factors</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/52.embed?width=750&height=517.5" target="plotIframe">Gradient</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/59.embed?width=750&height=517.5" target="plotIframe">Halo</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/66.embed?width=750&height=517.5" target="plotIframe">Integral of Gradient</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/74.embed?width=750&height=517.5" target="plotIframe">Longitudianl emittance ( Pi.deg.MeV )</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/82.embed?width=750&height=517.5" target="plotIframe">Norm. 4D_6D rms emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/89.embed?width=750&height=517.5" target="plotIframe">Norm. 99percent emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/96.embed?width=750&height=517.5" target="plotIframe">Norm. rms emittances ( Pi.mm.mrad )</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/103.embed?width=750&height=517.5" target="plotIframe">Period length ( m )</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/109.embed?width=750&height=517.5" target="plotIframe">Synchronous phase (deg)</a></li>
+						    <li class="list-group-item"><a href="https://plot.ly/~ess/115.embed?width=750&height=517.5" target="plotIframe">Tune depression</a></li>
 						  </ul>
 						</div>
 					</div>
 		        	<div class="col-md-8">
 						<div id="plotlyPlots">
-						    Select a plot from the list on the left.
+							<iframe name="plotIframe" width="750" height="517.5" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~ess/11.embed?width=750&height=517.5" style="max-width: 100%;"></iframe>
 						</div>
 					</div>
 				</div>
 	        </div>
+	        <div class="tab-pane fade" id="emittances">
+				<table data-toolbar="#toolbar" 
+					   data-toggle="table" 
+					   data-show-columns="true" 
+					   data-url="api/v1/lattices/latest/emittances">
+				    <thead>
+				        <tr>
+							<th data-field="Entrance of">Entrance of</th>
+							<th data-field="Energy min (MeV)">Energy min (MeV)</th>
+							<th data-field="Energy nom (MeV)">Energy nom (MeV)</th>
+							<th data-field="Energy max (MeV)">Energy max (MeV)</th>
+							<th data-field="Current (mA)">Current (mA)</th>
+							<th data-field="RMS emittance horizontal (mm mrad)">RMS emittance horizontal (mm mrad)</th>
+							<th data-field="Twiss alpha horizontal">Twiss alpha horizontal</th>
+							<th data-field="Twiss beta horizontal (m)">Twiss beta horizontal (m)</th>
+							<th data-field="RMS emittance vertical (mm mrad)">RMS emittance vertical (mm mrad)</th>
+							<th data-field="Twiss alpha vertical">Twiss alpha vertical</th>
+							<th data-field="Twiss beta vertical">Twiss beta vertical</th>
+							<th data-field="RMS emittance longitudinal (mm MeV)">RMS emittance longitudinal (mm MeV)</th>
+							<th data-field="Twiss alpha longitudinal">Twiss alpha longitudinal</th>
+							<th data-field="Twiss beta longitudinal">Twiss beta longitudinal</th>
+							<th data-field="Location (m)">Location (m)</th>
+				        </tr>
+				    </thead>
+				</table>
+				<p>min/nom/max:	 Min/max values defined as 99% limits</p>
+			</div>
 	    </div>
 		<div class="row">
 			<p></p>

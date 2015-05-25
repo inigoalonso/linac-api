@@ -19,10 +19,17 @@ apiObject = Api(app)
 ## Some converters and parsers
 ##
 
-def convertCsv2Json(csvFile, fieldNames):
+def convertDataCsv2Json(csvFile, fieldNames):
     csv_reader = csv.DictReader(csvFile,fieldNames)
     # Skip the first two rows of the file
     next(csv_reader, None)
+    next(csv_reader, None)
+    jsonData = json.dumps([row for row in csv_reader])
+    return eval(jsonData)
+
+def convertCsv2Json(csvFile, fieldNames):
+    csv_reader = csv.DictReader(csvFile,fieldNames)
+    # Skip the first two rows of the file
     next(csv_reader, None)
     jsonData = json.dumps([row for row in csv_reader])
     return eval(jsonData)
@@ -87,6 +94,7 @@ slotsFieldNames=["Section", "Cell", "Slot", "Model", "eVout", "v/c", "Length", "
 blesFieldNames=["Section", "Cell", "Slot", "BLE", "Type", "Model", "Disc", "Name", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur", "Zsur", "VT", "PhiS", "G", "Theta"]
 monitorsFieldNames=["Section", "Cell", "Slot", "BLE", "MON", "Type", "Model", "Disc", "Name", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur"]
 infoLinksFieldNames = ["Type", "Id", "Link"]
+legoSetFieldNames = ["BLE devName", "BLE data", "BLE value", "BLE unit", "LinacSet devName", "LinacSet Value", "LinacSet Unit", "TF 0", "TF 1", "TF 2", "TF 3", "TF 4"]
 
 def convertData():
     """Loads the data from the source"""
@@ -96,13 +104,21 @@ def convertData():
     global slotDataJson
     global bleDataJson
     global monitorDataJson
+    sectionDataJson = convertDataCsv2Json(linacLegoSectionDataFile, sectionsFieldNames)
+    cellDataJson = convertDataCsv2Json(linacLegoCellDataFile, cellsFieldNames)
+    slotDataJson = convertDataCsv2Json(linacLegoSlotDataFile, slotsFieldNames)
+    bleDataJson = convertDataCsv2Json(linacLegoBleDataFile, blesFieldNames)
+    monitorDataJson = convertDataCsv2Json(linacLegoMonitorDataFile, monitorsFieldNames)
+    
     global infoLinksDataJson
-    sectionDataJson = convertCsv2Json(linacLegoSectionDataFile, sectionsFieldNames)
-    cellDataJson = convertCsv2Json(linacLegoCellDataFile, cellsFieldNames)
-    slotDataJson = convertCsv2Json(linacLegoSlotDataFile, slotsFieldNames)
-    bleDataJson = convertCsv2Json(linacLegoBleDataFile, blesFieldNames)
-    monitorDataJson = convertCsv2Json(linacLegoMonitorDataFile, monitorsFieldNames)
+    global legoSetsDataJson
     infoLinksDataJson = convertCsv2Json(linacLegoInfoLinksFile, infoLinksFieldNames)
+    legoSetsDataJson = convertCsv2Json(linacLegoLegoSetFile, legoSetFieldNames)
+    
+    global emittancesDataJson
+    with open("emittances.csv") as emittancesFile:
+        emittancesFieldNames = ["Entrance of", "Energy min (MeV)", "Energy nom (MeV)", "Energy max (MeV)", "Current (mA)", "RMS emittance horizontal (mm mrad)", "Twiss alpha horizontal", "Twiss beta horizontal (m)", "RMS emittance vertical (mm mrad)", "Twiss alpha vertical", "Twiss beta vertical", "RMS emittance longitudinal (mm MeV)", "Twiss alpha longitudinal", "Twiss beta longitudinal", "Location (m)"]
+        emittancesDataJson = convertCsv2Json(emittancesFile, emittancesFieldNames)
 
     #sectionData2JsonFile = convert(linacLegoSectionDataFile, linacLegoSectionDataFileName, sectionsFieldNames)
     #cellData2JsonFile = convert(linacLegoCellDataFile, linacLegoCellDataFileName, cellsFieldNames)
@@ -366,6 +382,20 @@ class infoLinks(Resource):
     def get(self, lattice_id='latest'):
         abort_if_lattice_doesnt_exist(lattice_id)
         return infoLinksDataJson
+
+# legoSet
+#   show a list of lego sets
+class legoSets(Resource):
+    def get(self, lattice_id='latest'):
+        abort_if_lattice_doesnt_exist(lattice_id)
+        return legoSetsDataJson
+
+# emittances
+#   show the emittances_table.ods data
+class emittances(Resource):
+    def get(self, lattice_id='latest'):
+        abort_if_lattice_doesnt_exist(lattice_id)
+        return emittancesDataJson
         
 ##
 ## Instance classes
@@ -461,6 +491,10 @@ apiObject.add_resource(monitors,
     '/api/v1/lattices/<lattice_id>/monitors')
 apiObject.add_resource(infoLinks, 
     '/api/v1/lattices/<lattice_id>/infoLinks')
+apiObject.add_resource(legoSets, 
+    '/api/v1/lattices/<lattice_id>/legoSets')
+apiObject.add_resource(emittances, 
+    '/api/v1/lattices/<lattice_id>/emittances')
     
 # Instance resources
     
