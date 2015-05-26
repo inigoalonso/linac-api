@@ -52,10 +52,14 @@ def convert(csvFile, csvFileName, fieldNames):
 ##
 
 # List of API versions
-api_versions = ['v1']
 
-linacLegoXmlUrlBase = 'https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/master/xml/'
+def global_variables():
+    global api_versions
+    api_versions = ['v1']
+    global linacLegoXmlUrlBase
+    linacLegoXmlUrlBase = 'https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/master/xml/'
 
+global_variables()
 
 ##
 ## Retrieve and parse lattice data
@@ -66,25 +70,29 @@ linacLegoOutputUrlBase = linacLegoXmlUrlBase + 'linacLegoOutput/'
 
 linacLegoSectionDataFileName = 'linacLegoSectionData.csv'
 linacLegoCellDataFileName = 'linacLegoCellData.csv'
-linacLegoCellPartsFileName = 'linacLegoCellParts.csv'
 linacLegoSlotDataFileName = 'linacLegoSlotData.csv'
-linacLegoSlotPartsFileName = 'linacLegoSlotParts.csv'
 linacLegoBleDataFileName = 'linacLegoBleData.csv'
-linacLegoBlePartsFileName = 'linacLegoBleParts.csv'
 linacLegoMonitorDataFileName = 'linacLegoMonitorData.csv'
+
+linacLegoCellPartsFileName = 'linacLegoCellParts.csv'
+linacLegoSlotPartsFileName = 'linacLegoSlotParts.csv'
+linacLegoBlePartsFileName = 'linacLegoBleParts.csv'
 linacLegoMonitorPartsFileName = 'linacLegoMonitorParts.csv'
+
 linacLegoLegoSetFileName = 'linacLegoLegoSet.csv'
 linacLegoInfoLinksFileName = 'linacLegoInfoLinks.csv'
 
 linacLegoSectionDataFile = urlopen(linacLegoOutputUrlBase + linacLegoSectionDataFileName)
 linacLegoCellDataFile = urlopen(linacLegoOutputUrlBase + linacLegoCellDataFileName)
-linacLegoCellPartsFile = urlopen(linacLegoOutputUrlBase + linacLegoCellPartsFileName)
 linacLegoSlotDataFile = urlopen(linacLegoOutputUrlBase + linacLegoSlotDataFileName)
-linacLegoSlotPartsFile = urlopen(linacLegoOutputUrlBase + linacLegoSlotPartsFileName)
 linacLegoBleDataFile = urlopen(linacLegoOutputUrlBase + linacLegoBleDataFileName)
-linacLegoBlePartsFile = urlopen(linacLegoOutputUrlBase + linacLegoBlePartsFileName)
 linacLegoMonitorDataFile = urlopen(linacLegoOutputUrlBase + linacLegoMonitorDataFileName)
+
+linacLegoCellPartsFile = urlopen(linacLegoOutputUrlBase + linacLegoCellPartsFileName)
+linacLegoSlotPartsFile = urlopen(linacLegoOutputUrlBase + linacLegoSlotPartsFileName)
+linacLegoBlePartsFile = urlopen(linacLegoOutputUrlBase + linacLegoBlePartsFileName)
 linacLegoMonitorPartsFile = urlopen(linacLegoOutputUrlBase + linacLegoMonitorPartsFileName)
+
 linacLegoLegoSetFile = urlopen(linacLegoOutputUrlBase + linacLegoLegoSetFileName)
 linacLegoInfoLinksFile = urlopen(linacLegoOutputUrlBase + linacLegoInfoLinksFileName)
 
@@ -93,6 +101,12 @@ cellsFieldNames=["Section", "Cell", "Model", "eVout", "v/c", "Length", "Xend", "
 slotsFieldNames=["Section", "Cell", "Slot", "Model", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur", "Zsur"]
 blesFieldNames=["Section", "Cell", "Slot", "BLE", "Type", "Model", "Disc", "Name", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur", "Zsur", "VT", "PhiS", "G", "Theta"]
 monitorsFieldNames=["Section", "Cell", "Slot", "BLE", "MON", "Type", "Model", "Disc", "Name", "eVout", "v/c", "Length", "Xend", "Yend", "Zend", "Xsur", "Ysur"]
+
+cellPartsFieldNames = ["type", "model", "FE", "MEBT", "DTL", "SPK", "MBL", "HBL", "HEBT", "A2T", "Total"]
+slotPartsFieldNames = ["type", "model", "FE", "MEBT", "DTL", "SPK", "MBL", "HBL", "HEBT", "A2T", "Total"]
+blePartsFieldNames = ["type", "model", "FE", "MEBT", "DTL", "SPK", "MBL", "HBL", "HEBT", "A2T", "Total", "minValue", "avgValue", "maxValue", "Unit"]
+monitorPartsFieldNames = ["type", "model", "FE", "MEBT", "DTL", "SPK", "MBL", "HBL", "HEBT", "A2T", "Total"]
+
 infoLinksFieldNames = ["Type", "Id", "Link"]
 legoSetFieldNames = ["BLE devName", "BLE data", "BLE value", "BLE unit", "LinacSet devName", "LinacSet Value", "LinacSet Unit", "TF 0", "TF 1", "TF 2", "TF 3", "TF 4"]
 
@@ -109,6 +123,15 @@ def convertData():
     slotDataJson = convertDataCsv2Json(linacLegoSlotDataFile, slotsFieldNames)
     bleDataJson = convertDataCsv2Json(linacLegoBleDataFile, blesFieldNames)
     monitorDataJson = convertDataCsv2Json(linacLegoMonitorDataFile, monitorsFieldNames)
+    
+    global cellPartsJson
+    global slotPartsJson
+    global blePartsJson
+    global monitorPartsJson
+    cellPartsJson = convertCsv2Json(linacLegoCellPartsFile, cellPartsFieldNames)
+    slotPartsJson = convertCsv2Json(linacLegoSlotPartsFile, slotPartsFieldNames)
+    blePartsJson = convertCsv2Json(linacLegoBlePartsFile, blePartsFieldNames)
+    monitorPartsJson = convertCsv2Json(linacLegoMonitorPartsFile, monitorPartsFieldNames)
     
     global infoLinksDataJson
     global legoSetsDataJson
@@ -152,7 +175,7 @@ ds = linacData.get('d')
 linacData_d_ids = [d['@id'] for d in ds]
 
 # Lists of the hierarchical ids
-lattice_ids = ['latest']
+lattice_ids = ['master', 'development']
 #section_ids = None
 cell_ids = None
 slot_ids = None
@@ -304,20 +327,22 @@ class version(Resource):
 #   show a list of lattices
 class lattices(Resource):
     def get(self):
-        latticeList = [{'this is a':'list of lattices'}]
+        latticeList = []
+        for lattice in lattice_ids:
+            latticeList.append({'name':lattice})
         return latticeList
 
 # sections
 #   show a list of sections
 class sections(Resource):
-    def get(self, lattice_id='latest'):
+    def get(self, lattice_id='master'):
         abort_if_lattice_doesnt_exist(lattice_id)
         return sectionDataJson
 
 # cells
 #   show a list of cells
 class cells(Resource):
-    def get(self, lattice_id='latest', section_id=None):
+    def get(self, lattice_id='master', section_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
         if section_id == None:
             return cellDataJson
@@ -328,7 +353,7 @@ class cells(Resource):
 # slots
 #   show a list of slots
 class slots(Resource):
-    def get(self, lattice_id='latest', section_id=None, cell_id=None):
+    def get(self, lattice_id='master', section_id=None, cell_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
         if section_id == None:
             return slotDataJson
@@ -342,7 +367,7 @@ class slots(Resource):
 # bles
 #   show a list of bles
 class bles(Resource):
-    def get(self, lattice_id='latest', section_id=None, cell_id=None, slot_id=None):
+    def get(self, lattice_id='master', section_id=None, cell_id=None, slot_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
         if section_id == None:
             return bleDataJson
@@ -359,7 +384,7 @@ class bles(Resource):
 # monitors
 #   show a list of monitors
 class monitors(Resource):
-    def get(self, lattice_id='latest', section_id=None, cell_id=None, slot_id=None, ble_id=None):
+    def get(self, lattice_id='master', section_id=None, cell_id=None, slot_id=None, ble_id=None):
         abort_if_lattice_doesnt_exist(lattice_id)
         if section_id == None:
             return monitorDataJson
@@ -379,21 +404,21 @@ class monitors(Resource):
 # infoLinks
 #   show a list of infoLinks
 class infoLinks(Resource):
-    def get(self, lattice_id='latest'):
+    def get(self, lattice_id='master'):
         abort_if_lattice_doesnt_exist(lattice_id)
         return infoLinksDataJson
 
 # legoSet
 #   show a list of lego sets
 class legoSets(Resource):
-    def get(self, lattice_id='latest'):
+    def get(self, lattice_id='master'):
         abort_if_lattice_doesnt_exist(lattice_id)
         return legoSetsDataJson
 
 # emittances
 #   show the emittances_table.ods data
 class emittances(Resource):
-    def get(self, lattice_id='latest'):
+    def get(self, lattice_id='master'):
         abort_if_lattice_doesnt_exist(lattice_id)
         return emittancesDataJson
         
@@ -455,6 +480,34 @@ class monitor(Resource):
         monitor = {}
         return monitor
 
+##
+## Parts
+##
+
+# cellParts
+class cellParts(Resource):
+    def get(self, lattice_id='master'):
+        abort_if_lattice_doesnt_exist(lattice_id)
+        return cellPartsJson
+
+# slotParts
+class slotParts(Resource):
+    def get(self, lattice_id='master'):
+        abort_if_lattice_doesnt_exist(lattice_id)
+        return slotPartsJson
+
+# bleParts
+class bleParts(Resource):
+    def get(self, lattice_id='master'):
+        abort_if_lattice_doesnt_exist(lattice_id)
+        return blePartsJson
+
+# monitorParts
+class monitorParts(Resource):
+    def get(self, lattice_id='master'):
+        abort_if_lattice_doesnt_exist(lattice_id)
+        return monitorPartsJson
+
 
 ##
 ## Actually setup the Api resource routing here
@@ -495,6 +548,14 @@ apiObject.add_resource(legoSets,
     '/api/v1/lattices/<lattice_id>/legoSets')
 apiObject.add_resource(emittances, 
     '/api/v1/lattices/<lattice_id>/emittances')
+apiObject.add_resource(cellParts, 
+    '/api/v1/lattices/<lattice_id>/cellParts')
+apiObject.add_resource(slotParts, 
+    '/api/v1/lattices/<lattice_id>/slotParts')
+apiObject.add_resource(bleParts, 
+    '/api/v1/lattices/<lattice_id>/bleParts')
+apiObject.add_resource(monitorParts, 
+    '/api/v1/lattices/<lattice_id>/monitorParts')
     
 # Instance resources
     
@@ -528,9 +589,12 @@ apiObject.add_resource(monitor,
 # The root page
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    lattice = request.args.get('lattice')
+    if lattice == None:
+        lattice = "master"
+    return render_template('template.html', lattice=lattice, links=infoLinksDataJson)
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

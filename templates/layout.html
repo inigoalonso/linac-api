@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}ESS Linac Parameter Book{% endblock %}</title>
+	<link rel="shortcut icon" href="static/images/favi.ico">
+    <link href="static/css/lib/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="static/css/lib/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+	<link href="static/css/lib/bootstrap-table.min.css" rel="stylesheet">
+	<style>
+	body {
+	    padding-top: 70px;
+		}
+	</style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<script src="//fast.eager.io/Nwdx8E2n_O.js"></script>
+	<script src="static/js/lib/pace.min.js"></script>
+	<link href="static/css/lib/pace/themes/blue/pace-theme-big-counter.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+			  <a class="navbar-brand" href="#">
+				  <img alt="Brand" width="20" height="20" src="static/images/ESS_Alone_Frugal_White_BlueBK_600.png">
+			  </a>
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="/">ESS Linac Parameter Book</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	          <ul class="nav navbar-nav">
+	              <li class="active"><a href="#info" data-toggle="tab">Info <span class="sr-only">(current)</span></a></li>
+	              <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+	                  PBS <span class="caret"></span>
+	                </a>
+	                <ul class="dropdown-menu" role="menu">
+	                  <li><a href="#pbsLayout" data-toggle="tab">PBS Layout</a></li>
+	                  <li><a href="#pbsTree" data-toggle="tab">PBS Tree</a></li>
+	                  <li><a href="#xmlTree" data-toggle="tab">XML Tree</a></li>
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+	                  Data <span class="caret"></span>
+	                </a>
+	                <ul class="dropdown-menu" role="menu">
+	                  <li><a href="#sectionData" data-toggle="tab">Section data</a></li>
+	                  <li><a href="#cellData" data-toggle="tab">Cell data</a></li>
+	                  <li><a href="#slotData" data-toggle="tab">Slot data</a></li>
+	                  <li><a href="#bleData" data-toggle="tab">BLE data</a></li>
+	                  <li><a href="#monitorData" data-toggle="tab">Monitor data</a></li>
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+	                  Parts <span class="caret"></span>
+	                </a>
+	                <ul class="dropdown-menu" role="menu">
+	                  <li><a href="#cellParts" data-toggle="tab">Cell Parts</a></li>
+	                  <li><a href="#slotParts" data-toggle="tab">Slot Parts</a></li>
+	                  <li><a href="#bleParts" data-toggle="tab">Beam-line Parts</a></li>
+	                  <li><a href="#monitorParts" data-toggle="tab">Monitor Parts</a></li>
+	                </ul>
+	              </li>
+	              <li><a href="#legoSets" data-toggle="tab">Lego Sets</a></li>
+	              <li><a href="#plots" data-toggle="tab">Plots</a></li>
+	              <li><a href="#emittances" data-toggle="tab">Emittances</a></li>
+            
+	          </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> External Links <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="https://aig.esss.lu.se:8443/LinacLegoWebApp/">LinacLego Web App</a></li>
+		            <li><a href="https://github.com/inigoalonso/linac-api">Repository for this site</a></li>
+		            <li class="divider"></li>
+		            <li><a href="mailto:inigo.alonso@esss.se?Subject=linac-api">Contact</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<div class="alert alert-danger alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>Warning!</strong> This prototype is a proof of concept, for production data please refer to <a href="https://aig.esss.lu.se:8443/LinacLegoWebApp/" class="alert-link">linacLego</a>.
+		</div>
+		{% block content %}{% endblock %}
+	</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="static/js/lib/bootstrap.min.js"></script>
+	<script src="static/js/lib/bootstrap-table.min.js"></script>
+	<script src="static/js/lib/bootstrap-table-export.min.js"></script>
+
+</body>
+</html>

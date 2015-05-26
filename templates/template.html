@@ -1,0 +1,463 @@
+{% extends "layout.html" %}
+{% block title %}ESS Linac Parameter Book{% endblock %}
+{% block content %}
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="info">
+                <div class="row">
+                    <p></p>
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">ESS Linac Parameter Book v.2.0alpha</h3>
+                          </div>
+                          <div class="panel-body">
+                            Last Updated May 26, 2015
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <!-- Default panel contents -->
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Downloads</h3>
+                          </div>
+                          <ul class="list-group">
+                            <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/{{ lattice }}/xml/linacLego.zip">Download XML files</a></li>
+                            <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/{{ lattice }}/doc/LinacLegoManual.pdf">LinacLego Manual</a></li>
+                            <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/{{ lattice }}/dist/LinacLegoApp.jar">LinacLego Application</a></li>
+                            <li class="list-group-item"><a href="https://f6dea02762c7d72c87ecd77e9ac9c92f0cd2fa43.googledrive.com/host/0B_mauLIA30CDVzY4NWdXODBNU3c/LinacLego/{{ lattice }}/">Source Web Folder</a></li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Lattice Version</h3>
+                          </div>
+                          <div class="panel-body">
+							  <strong>linacLego</strong>
+                          </div>
+						  <table class="table table-striped table-condensed">
+						    <tr>
+						      <td>Comment</td>
+						      <td>New HEBT and A2T drawings</td>
+						    </tr>
+						    <tr>
+						      <td>Date</td>
+						      <td>20-Apr-2015</td>
+						    </tr>
+						    <tr>
+						      <td>revNo</td>
+						      <td>5.0</td>
+						    </tr>
+						    <tr>
+						      <td>title</td>
+						      <td>EssLinac</td>
+						    </tr>
+						  </table>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Reload Source</h3>
+                          </div>
+                          <div class="panel-body">
+							<div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownLattice" data-toggle="dropdown" aria-expanded="true">
+							    Lattice version
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+								<li role="presentation" class="dropdown-header">Baselines</li>
+							    <li role="presentation"><a role="menuitem" tabindex="-1" href="?lattice=master">Master</a></li>
+								<li role="presentation" class="dropdown-header">Preliminary</li>
+							    <li role="presentation"><a role="menuitem" tabindex="-1" href="?lattice=development">Development</a></li>
+							  </ul>
+							</div>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Current Source</h3>
+                          </div>
+                          <div class="panel-body">
+							Currently viewing the {{ lattice }} source.
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Drawing Index</h3>
+                          </div>
+							<table>
+							</table>
+                            <table class="table table-striped table-condensed">
+                              <thead>
+                                  <tr>
+                                      <th>Type</th>
+                                      <th>Id</th>
+                                  </tr>
+                              </thead>
+							  <tbody>
+	  							{% for row in links %}
+	  							   <tr>
+	  							        <th> {{ row["Type"] }} </th>
+	  							        <td><a href='{{ row["Link"] }}'> {{ row["Id"] }} </a></td>
+	  							   </tr>
+	  							{% endfor %}
+							  </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pbsLayout">
+                Contents of the pbsLayout tab
+            </div>
+            <div class="tab-pane fade" id="pbsTree">Content inside tab pbsTree</div>
+            <div class="tab-pane fade" id="xmlTree">Content inside tab xmlTree</div>
+            <div class="tab-pane fade" id="sectionData">
+                <h2>Section Data</h2>
+                <table class="table table-striped table-condensed"
+                       data-toolbar="#toolbar" 
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/sections"
+				       data-sort-order="desc">
+                       <thead>
+                           <tr>
+                               <th data-field="Section">Section</th>
+                               <th data-field="eVout">eVout (MeV)</th>
+                               <th data-field="Length">Length (m)</th>
+                               <th data-field="Xend">Xend (m)</th>
+                               <th data-field="Yend">Yend (m)</th>
+                               <th data-field="Zend" data-sortable="true">Zend (m)</th>
+                               <th data-field="Xsur">Xsur (m)</th>
+                               <th data-field="Ysur">Ysur (m)</th>
+                               <th data-field="Zsur">Zsur (m)</th>
+                           </tr>
+                       </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="cellData">
+                <h2>Cell Data</h2>
+                <table class="table table-striped table-condensed"
+                       data-toolbar="#toolbar" 
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/cells"
+				       data-sort-order="desc">
+                    <thead>
+                        <tr>
+                            <th data-field="Section">Section</th>
+                            <th data-field="Cell">Cell</th>
+                            <th data-field="Model">Model</th>
+                            <th data-field="eVout">eVout (MeV)</th>
+                            <th data-field="Length">Length (m)</th>
+                            <th data-field="Xend">Xend (m)</th>
+                            <th data-field="Yend">Yend (m)</th>
+                            <th data-field="Zend" data-sortable="true">Zend (m)</th>
+                            <th data-field="Xsur">Xsur (m)</th>
+                            <th data-field="Ysur">Ysur (m)</th>
+                            <th data-field="Zsur">Zsur (m)</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="slotData">
+                <h2>Slot Data</h2>
+                <table class="table table-striped table-condensed"
+                       data-toolbar="#toolbar" 
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/slots"
+				       data-sort-order="desc">
+                    <thead>
+                        <tr>
+                            <th data-field="Section">Section</th>
+                            <th data-field="Cell">Cell</th>
+                            <th data-field="Slot">Slot</th>
+                            <th data-field="Model">Model</th>
+                            <th data-field="eVout">eVout (MeV)</th>
+                            <th data-field="Length">Length (m)</th>
+                            <th data-field="Xend">Xend (m)</th>
+                            <th data-field="Yend">Yend (m)</th>
+                            <th data-field="Zend" data-sortable="true">Zend (m)</th>
+                            <th data-field="Xsur">Xsur (m)</th>
+                            <th data-field="Ysur">Ysur (m)</th>
+                            <th data-field="Zsur">Zsur (m)</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="bleData">
+                <h2>BLE Data</h2>
+                <table class="table table-striped table-condensed"
+                       data-toolbar="#toolbar" 
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/bles"
+				       data-sort-order="desc">
+                    <thead>
+                        <tr>
+                            <th data-field="Section">Section</th>
+                            <th data-field="Cell">Cell</th>
+                            <th data-field="Slot">Slot</th>
+                            <th data-field="BLE">BLE</th>
+                            <th data-field="Type" data-sortable="true">Type</th>
+                            <th data-field="Model" data-sortable="true">Model</th>
+                            <th data-field="Disc" data-sortable="true">Disc</th>
+                            <th data-field="Name">Name</th>
+                            <th data-field="eVout">eVout (MeV)</th>
+                            <th data-field="Length">Length (m)</th>
+                            <th data-field="Xend">Xend (m)</th>
+                            <th data-field="Yend">Yend (m)</th>
+                            <th data-field="Zend" data-sortable="true">Zend (m)</th>
+                            <th data-field="Xsur">Xsur (m)</th>
+                            <th data-field="Ysur">Ysur (m)</th>
+                            <th data-field="Zsur">Zsur (m)</th>
+                            <th data-field="VT">VT</th>
+                            <th data-field="PhiS">PhiS</th>
+                            <th data-field="G">G</th>
+                            <th data-field="Theta">Theta</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="monitorData">
+                <h2>Monitor Data</h2>
+                <table class="table table-striped table-condensed"
+                       data-toolbar="#toolbar" 
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/monitors"
+				       data-sort-order="desc">
+                    <thead>
+                        <tr>
+                            <th data-field="Section">Section</th>
+                            <th data-field="Cell">Cell</th>
+                            <th data-field="Slot">Slot</th>
+                            <th data-field="BLE">BLE</th>
+                            <th data-field="MON">MON</th>
+                            <th data-field="Type" data-sortable="true">Type</th>
+                            <th data-field="Model" data-sortable="true">Model</th>
+                            <th data-field="Disc" data-sortable="true">Disc</th>
+                            <th data-field="Name">Name</th>
+                            <th data-field="eVout">eVout (MeV)</th>
+                            <th data-field="Length">Length (m)</th>
+                            <th data-field="Xend">Xend (m)</th>
+                            <th data-field="Yend">Yend (m)</th>
+                            <th data-field="Zend" data-sortable="true">Zend (m)</th>
+                            <th data-field="Xsur">Xsur (m)</th>
+                            <th data-field="Ysur">Ysur (m)</th>
+                            <th data-field="Zsur">Zsur (m)</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="cellParts">
+                <h2>Cell Parts</h2>
+                <table class="table table-striped table-condensed"
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/cellParts"
+				       data-sort-order="desc">
+                  <thead>
+                      <tr>
+                          <th data-field="type" data-sortable="true">type</th>
+                          <th data-field="model" data-sortable="true">model</th>
+                          <th data-field="FE" data-sortable="true">FE</th>
+                          <th data-field="MEBT" data-sortable="true">MEBT</th>
+                          <th data-field="DTL" data-sortable="true">DTL</th>
+                          <th data-field="SPK" data-sortable="true">SPK</th>
+                          <th data-field="MBL" data-sortable="true">MBL</th>
+                          <th data-field="HBL" data-sortable="true">HBL</th>
+                          <th data-field="HEBT" data-sortable="true">HEBT</th>
+                          <th data-field="A2T" data-sortable="true">A2T</th>
+                          <th data-field="Total" data-sortable="true">Total</th>
+                      </tr>
+                  </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="slotParts">
+                <h2>Slot Parts</h2>
+                <table class="table table-striped table-condensed"
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/slotParts"
+				       data-sort-order="desc">
+                  <thead>
+                      <tr>
+                          <th data-field="type" data-sortable="true">type</th>
+                          <th data-field="model" data-sortable="true">model</th>
+                          <th data-field="FE" data-sortable="true">FE</th>
+                          <th data-field="MEBT" data-sortable="true">MEBT</th>
+                          <th data-field="DTL" data-sortable="true">DTL</th>
+                          <th data-field="SPK" data-sortable="true">SPK</th>
+                          <th data-field="MBL" data-sortable="true">MBL</th>
+                          <th data-field="HBL" data-sortable="true">HBL</th>
+                          <th data-field="HEBT" data-sortable="true">HEBT</th>
+                          <th data-field="A2T" data-sortable="true">A2T</th>
+                          <th data-field="Total" data-sortable="true">Total</th>
+                      </tr>
+                  </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="bleParts">
+                <h2>BLE Parts</h2>
+                <table class="table table-striped table-condensed"
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/bleParts"
+				       data-sort-order="desc">
+                  <thead>
+                      <tr>
+                          <th data-field="type" data-sortable="true">type</th>
+                          <th data-field="model" data-sortable="true">model</th>
+                          <th data-field="FE" data-sortable="true">FE</th>
+                          <th data-field="MEBT" data-sortable="true">MEBT</th>
+                          <th data-field="DTL" data-sortable="true">DTL</th>
+                          <th data-field="SPK" data-sortable="true">SPK</th>
+                          <th data-field="MBL" data-sortable="true">MBL</th>
+                          <th data-field="HBL" data-sortable="true">HBL</th>
+                          <th data-field="HEBT" data-sortable="true">HEBT</th>
+                          <th data-field="A2T" data-sortable="true">A2T</th>
+                          <th data-field="Total" data-sortable="true">Total</th>
+                          <th data-field="minValue" data-sortable="true">minValue</th>
+                          <th data-field="avgValue" data-sortable="true">avgValue</th>
+                          <th data-field="maxValue" data-sortable="true">maxValue</th>
+                          <th data-field="Unit" data-sortable="true">Unit</th>
+                      </tr>
+                  </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="monitorParts">
+                <h2>Monitor Parts</h2>
+                <table class="table table-striped table-condensed"
+                       data-toggle="table" 
+                       data-search="true" 
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/monitorParts"
+				       data-sort-order="desc">
+                  <thead>
+                      <tr>
+                          <th data-field="type" data-sortable="true">type</th>
+                          <th data-field="model" data-sortable="true">model</th>
+                          <th data-field="FE" data-sortable="true">FE</th>
+                          <th data-field="MEBT" data-sortable="true">MEBT</th>
+                          <th data-field="DTL" data-sortable="true">DTL</th>
+                          <th data-field="SPK" data-sortable="true">SPK</th>
+                          <th data-field="MBL" data-sortable="true">MBL</th>
+                          <th data-field="HBL" data-sortable="true">HBL</th>
+                          <th data-field="HEBT" data-sortable="true">HEBT</th>
+                          <th data-field="A2T" data-sortable="true">A2T</th>
+                          <th data-field="Total" data-sortable="true">Total</th>
+                      </tr>
+                  </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="legoSets">
+                <h2>Lego Sets</h2>
+                <table class="table table-striped table-condensed"
+                       data-toolbar="#toolbar" 
+                       data-toggle="table" 
+                       data-search="true"
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/legoSets"
+				       data-sort-order="desc">
+                    <thead>
+                        <tr>
+                            <th data-field="BLE devName">BLE devName</th>
+                            <th data-field="BLE data">BLE data</th>
+                            <th data-field="BLE value">BLE value</th>
+                            <th data-field="BLE unit">BLE unit</th>
+                            <th data-field="LinacSet devName">LinacSet devName</th>
+                            <th data-field="LinacSet Value">LinacSet Value</th>
+                            <th data-field="LinacSet Unit">LinacSet Unit</th>
+                            <th data-field="TF 0">TF 0</th>
+                            <th data-field="TF 1">TF 1</th>
+                            <th data-field="TF 2">TF 2</th>
+                            <th data-field="TF 3">TF 3</th>
+                            <th data-field="TF 4">TF 4</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="plots">
+                <h2>Plots</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                          <!-- Default panel contents -->
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Chose the plot</h3>
+                          </div>
+                          <ul class="list-group">
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/11.embed?width=750&height=517.5" target="plotIframe">Cavity power ( kW )</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/24.embed?width=750&height=517.5" target="plotIframe">Energy ( MeV )</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/31.embed?width=750&height=517.5" target="plotIframe">Envelopes</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/39.embed?width=750&height=517.5" target="plotIframe">Field Map Factors</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/52.embed?width=750&height=517.5" target="plotIframe">Gradient</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/59.embed?width=750&height=517.5" target="plotIframe">Halo</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/66.embed?width=750&height=517.5" target="plotIframe">Integral of Gradient</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/74.embed?width=750&height=517.5" target="plotIframe">Longitudianl emittance ( Pi.deg.MeV )</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/82.embed?width=750&height=517.5" target="plotIframe">Norm. 4D_6D rms emittances ( Pi.mm.mrad )</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/89.embed?width=750&height=517.5" target="plotIframe">Norm. 99percent emittances ( Pi.mm.mrad )</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/96.embed?width=750&height=517.5" target="plotIframe">Norm. rms emittances ( Pi.mm.mrad )</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/103.embed?width=750&height=517.5" target="plotIframe">Period length ( m )</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/109.embed?width=750&height=517.5" target="plotIframe">Synchronous phase (deg)</a></li>
+                            <li class="list-group-item"><a href="https://plot.ly/~ess/115.embed?width=750&height=517.5" target="plotIframe">Tune depression</a></li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div id="plotlyPlots">
+                            <iframe name="plotIframe" width="750" height="517.5" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~ess/11.embed?width=750&height=517.5" style="max-width: 100%;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="emittances">
+                <h2>Emittances</h2>
+                <table class="table table-striped table-condensed"
+                       data-toolbar="#toolbar" 
+                       data-toggle="table" 
+                       data-search="true"
+                       data-show-columns="true" 
+                       data-url="api/v1/lattices/{{ lattice }}/emittances"
+				       data-sort-order="desc">
+                    <thead>
+                        <tr>
+                            <th data-field="Entrance of">Entrance of</th>
+                            <th data-field="Energy min (MeV)">Energy min (MeV)</th>
+                            <th data-field="Energy nom (MeV)">Energy nom (MeV)</th>
+                            <th data-field="Energy max (MeV)">Energy max (MeV)</th>
+                            <th data-field="Current (mA)">Current (mA)</th>
+                            <th data-field="RMS emittance horizontal (mm mrad)">RMS emittance horizontal (mm mrad)</th>
+                            <th data-field="Twiss alpha horizontal">Twiss alpha horizontal</th>
+                            <th data-field="Twiss beta horizontal (m)">Twiss beta horizontal (m)</th>
+                            <th data-field="RMS emittance vertical (mm mrad)">RMS emittance vertical (mm mrad)</th>
+                            <th data-field="Twiss alpha vertical">Twiss alpha vertical</th>
+                            <th data-field="Twiss beta vertical">Twiss beta vertical</th>
+                            <th data-field="RMS emittance longitudinal (mm MeV)">RMS emittance longitudinal (mm MeV)</th>
+                            <th data-field="Twiss alpha longitudinal">Twiss alpha longitudinal</th>
+                            <th data-field="Twiss beta longitudinal">Twiss beta longitudinal</th>
+                            <th data-field="Location (m)" data-sortable="true">Location (m)</th>
+                        </tr>
+                    </thead>
+                </table>
+                <p>min/nom/max:     Min/max values defined as 99% limits</p>
+            </div>
+        </div>
+        <div class="row">
+            <p></p>
+            <p class="text-center"><small>Pre-alpha version</small></p>
+        </div>
+{% endblock %}
