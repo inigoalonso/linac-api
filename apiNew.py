@@ -15,6 +15,7 @@ app = Flask(__name__, static_folder="static")
 
 apiObject = Api(app)
 
+
 ##
 ## Some converters and parsers
 ##
@@ -431,7 +432,7 @@ class emittances(Resource):
 class lattice(Resource):
     def get(self, lattice_id):
         abort_if_lattice_doesnt_exist(lattice_id)
-        lattice = {'name':lattice_id,'version':'version','description':'This is the description of the lattice.'}
+        lattice = {'id':lattice_id,'name':'name','version':'version','description':'This is the description of the lattice.'}
         return lattice
 
 # section
