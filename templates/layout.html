@@ -9,6 +9,7 @@
     <link href="static/css/lib/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="static/css/lib/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link href="static/css/lib/bootstrap-table.min.css" rel="stylesheet">
+	<link href="static/css/lib/bootstrap-treeview.min.css" rel="stylesheet">
 	<style>
 	body {
 	    padding-top: 70px;
@@ -110,6 +111,120 @@
 	<script src="static/js/lib/bootstrap.min.js"></script>
 	<script src="static/js/lib/bootstrap-table.min.js"></script>
 	<script src="static/js/lib/bootstrap-table-export.min.js"></script>
+    <script src="static/js/lib/bootstrap-treeview.min.js"></script>
+	<script>
+	var dataoriginal = [
+	  {
+	    "text": "linacLego",
+		"data": [{"version":"0.0"}, {"comment": "This is a comment abot the linacLego."}],
+	    "nodes": [
+	      {
+	        "text": "header",
+		    "data": [{"version":"1.5"}, {"comment": "This is another comment."}],
+	        "nodes": [
+	          {
+	            "text": "slotModels",
+				"data": [{"version":"5.4"}, {"comment": "This is a random comment."}]
+	          },
+	          {
+	            "text": "cellModels",
+				"data": [{"version":"3.9"}, {"comment": "This is a funny comment."}]
+	          },
+	          {
+	            "text": "legoSets",
+				"data": [{"version":"4.2"}, {"comment": "This is not the comment you are looking for."}]
+	          },
+	          {
+	            "text": "monitorSets",
+				"data": [{"version":"3.0"}, {"comment": "This is the true comment."}]
+	          }
+	        ]
+	      },
+	      {
+	        "text": "linac",
+			"data": [{"version":"1.5"}, {"comment": "This is comment wishes to be a comet."}]
+	      }
+	    ]
+	  }
+	];
+	
+	var datatest = [
+{ "text" : "linacLego", "nodes" : { "comment" : "New HEBT and A2T drawings", "date" : "25-Mar-2015", "revNo" : 4.11, "title" : "EssLinac", "text" : "linac", "nodes" : { "linacData" : { "text" : "d", "nodes" : [ { "id" : "ekin", "type" : "double", "unit" : "MeV", "value" : 3.6 }, { "id" : "beamFrequency", "type" : "double", "unit" : "MHz", "value" : 352.21 }, { "id" : "xSurvey", "type" : "double", "unit" : "m", "value" : 0.0 }, { "id" : "ySurvey", "type" : "double", "unit" : "m", "value" : -4.5 }, { "id" : "zSurvey", "type" : "double", "unit" : "m", "value" : -595.4308 }, { "id" : "pitchSurvey", "type" : "double", "unit" : "deg", "value" : 0.0 }, { "id" : "rollSurvey", "type" : "double", "unit" : "deg", "value" : 0.0 }, { "id" : "yawSurvey", "type" : "double", "unit" : "deg", "value" : 0.0 }, { "id" : "alphaX", "type" : "double", "unit" : "unit", "value" : -0.05180557 }, { "id" : "betaX", "type" : "double", "unit" : "mm/pi.mrad", "value" : 0.20954707 }, { "id" : "emitX", "type" : "double", "unit" : "pi.mm.mrad", "value" : 0.2528802 }, { "id" : "alphaY", "type" : "double", "unit" : "unit", "value" : -0.30984507 }, { "id" : "betaY", "type" : "double", "unit" : "mm/pi.mrad", "value" : 0.37074837 }, { "id" : "emitY", "type" : "double", "unit" : "pi.mm.mrad", "value" : 0.2516941 }, { "id" : "alphaZ", "type" : "double", "unit" : "unit", "value" : -0.48100935 }, { "id" : "betaZ", "type" : "double", "unit" : "mm/pi.mrad", "value" : 0.9257504 }, { "id" : "emitZ", "type" : "double", "unit" : "pi.mm.mrad", "value" : 0.3614409 }, { "id" : "beamCurrent", "type" : "double", "unit" : "mA", "value" : 62.5 } ] }, "text" : "section", "nodes" : [ { "id" : "FE", "rfHarmonic" : 1, "xml:base" : "frontEndLego.xml", "cell" : { "id" : "FE", "model" : "FrontEndCell" } }, { "id" : "MEBT", "rfHarmonic" : 1, "xml:base" : "mebtLego.xml", "text" : "cell", "nodes" : [ { "id" : 010, "model" : "MebtCell01", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : -16.1578 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] }, { "id" : 020, "model" : "MebtQhpCav", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : 19.4008 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 }, { "id" : "voltsT", "type" : "double", "value" : 125435.0 }, { "id" : "rfPhaseDeg", "type" : "double", "value" : -90.0 } ] }, { "id" : 030, "model" : "MebtCellQvp100Drift", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : -14.2708 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] }, { "id" : 040, "model" : "MebtCell04", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : 2.05 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 }, { "id" : "voltsT", "type" : "double", "value" : 59000.0 }, { "id" : "rfPhaseDeg", "type" : "double", "value" : -90.0 } ] }, { "id" : 050, "model" : "MebtCellQhp100Drift", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : 8.22001 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] }, { "id" : 060, "model" : "MebtCellQvp100Drift", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : -15.5667 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] }, { "id" : 070, "model" : "MebtCell07", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : 9.88831 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] }, { "id" : 080, "model" : "MebtQvpCav", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : -9.43731 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 }, { "id" : "voltsT", "type" : "double", "value" : 140000.0 }, { "id" : "rfPhaseDeg", "type" : "double", "value" : -90.0 } ] }, { "id" : 090, "model" : "MebtCellQhp100Drift", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : 18.9722 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] }, { "id" : 100, "model" : "MebtCellQvp100Drift", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : -31.2924 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] }, { "id" : 110, "model" : "MebtCellQhp100Drift", "text" : "d", "nodes" : [ { "id" : "g1", "type" : "double", "value" : 23.8721 }, { "id" : "xkick", "type" : "double", "value" : 0.0 }, { "id" : "ykick", "type" : "double", "value" : 0.0 } ] } ] } ] } } }
+
+]
+		
+	//$('#selectable-output').html('<p>' + dataFromAPI + ' was fetched</p>');
+
+	$(function() {
+
+	var initSelectableTree = function(data) {
+	          return $('#treeview').treeview({
+	            data: dataoriginal,
+	            multiSelect: $('#chk-select-multi').is(':checked'),
+	            onNodeSelected: function(event, node) {
+	              $('#selectable-output').html('<p>Extra data about ' + JSON.stringify(node.text) + ' will be displayed here:</p><p><strong>Version:</strong> ' + JSON.stringify(node.data[0].version) + '</p><p><strong>Comment:</strong> ' + JSON.stringify(node.data[1].comment) + '</p>');
+	            },
+	            onNodeUnselected: function (event, node) {
+	              //$('#selectable-output').html('<p>' + node.text + ' was unselected</p>');
+	            }
+	          });
+	        };
+
+    
+	
+
+	
+	var jqxhr = $.getJSON( "api/v1/lattices/master/sections/HEBT/cells")
+	.done(function() {
+	  //alert( "success" );
+	  var dataFromAPI = jqxhr.responseJSON;
+      var $selectableTree = initSelectableTree(dataFromAPI);
+
+      var findSelectableNodes = function() {
+        return $selectableTree.treeview('search', [ $('#input-select-node').val(), { ignoreCase: false, exactMatch: false } ]);
+      };
+      var selectableNodes = findSelectableNodes();
+
+      $('#chk-select-multi:checkbox').on('change', function () {
+        console.log('multi-select change');
+        $selectableTree = initSelectableTree();
+        selectableNodes = findSelectableNodes();          
+      });
+
+      var search = function(e) {
+        var pattern = $('#input-search').val();
+        var options = {
+          ignoreCase: $('#chk-ignore-case').is(':checked'),
+          exactMatch: $('#chk-exact-match').is(':checked'),
+          revealResults: $('#chk-reveal-results').is(':checked')
+        };
+        var results = $selectableTree.treeview('search', [ pattern, options ]);
+
+        var output = '<p>' + results.length + ' matches found</p>';
+        $.each(results, function (index, result) {
+          output += '<p>- ' + result.text + '</p>';
+        });
+        $('#search-output').html(output);
+      }
+
+      $('#btn-search').on('click', search);
+      $('#input-search').on('keyup', search);
+
+      $('#btn-clear-search').on('click', function (e) {
+        $searchableTree.treeview('clearSearch');
+        $('#input-search').val('');
+        $('#search-output').html('');
+      });
+      });
+	})
+	.fail(function() {
+	  alert( "error" );
+	})
+	.always(function() {
+	  //alert( "complete" );
+	});
+	
+	</script>
 
 </body>
 </html>
