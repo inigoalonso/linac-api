@@ -1,0 +1,111 @@
+<!DOCTYPE html>   
+<html lang="en">     
+    <head>              
+        <title>Content with Menu</title>
+        <style>
+			.linac, .section, .cell, .slot, .ble, .monitor{
+			  padding: 10px 5px;
+			  margin: 5px 0px;
+			  text-align: center;
+    		  border: grey solid 1px;
+			  float: left;
+			}
+			.section, .cell, .slot, .ble, .monitor{
+			  cursor:pointer;
+			  min-width: 100px;
+			  display: inline-block;
+			}
+			.linac {
+			  background: lightcoral;
+			  height: 200px;
+			  width: auto;
+			  white-space: nowrap;
+			}
+			.section{
+			  background: lightyellow;
+			  display: inline;
+			}
+			.cell {
+			  background: lightgreen;
+			}
+			.slot {
+			  background: lightblue;
+			}
+			.ble {
+			  background: mediumpurple;
+			}
+			.monitor {
+			  background: lightpink;
+			}
+			.hidden {
+			  display: none;
+			}
+        </style>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    </head>
+    <body>        
+		<div class="linac" id="linac1"><p>Linac1</p>
+    
+		    <div class="section" id="section_1"><p>Section1</p>
+		      <div class="cell hidden" id="cell_1"><p>Cell1.1</p> 
+		          <div class="slot hidden" id="slot_1"><p>Slot1.1.1</p> 
+		              <div class="ble hidden" id="ble_1"><p>Ble1.1.1.1</p></div>
+		          </div> 
+		          <div class="slot hidden" id="slot_1"><p>Slot1.1.2</p> </div>
+		      </div>
+		        <div class="cell hidden" id="cell_1"><p>Cell1.2</p> </div>
+		    </div>
+    
+		    <div class="section" id="section_2"><p>Section2</p>
+		        <div class="cell hidden" id="cell_2"><p>Cell2.1</p></div>
+		        <div class="cell hidden" id="cell_2"><p>Cell2.2</p></div>
+		        <div class="cell hidden" id="cell_2"><p>Cell2.3</p></div>
+		    </div>
+    
+		</div>
+
+
+
+	<script>
+		$('.section').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.cell').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.cell').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+		$(".section div").click(function(e) {
+		    e.stopPropagation();
+		});
+		$('.cell').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.slot').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.slot').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+		$('.slot').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.ble').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.ble').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+		$('.ble').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.monitor').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.monitor').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+	</script>
+    </body>
+</html>

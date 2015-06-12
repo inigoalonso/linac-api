@@ -1,0 +1,238 @@
+<!DOCTYPE html>   
+<html lang="en">     
+    <head>              
+        <title>PBS test</title>
+
+        <style>
+			.linac, .section, .cell, .slot, .ble, .monitor{
+			  padding: 10px 5px;
+			  margin: 5px 0px;
+			  text-align: center;
+			  display: table-cell;
+			}
+			.section, .cell, .slot, .ble, .monitor{
+			  cursor:pointer;
+			  min-width: 100px;
+    		  border: white solid 1px;
+			  border-radius: 5px;
+			}
+			.sections, .cells, .slots, .bles, .monitors{
+			  background: grey;
+			  padding: 2px;
+			  height: auto;
+			  display: table;
+			  border-radius: 5px;
+			}
+			.linac {
+			  background: lightcoral;
+			  width: auto;
+			  display: table;
+			}
+			.section{
+			  background: lightyellow;
+			}
+			.cell {
+			  background: lightgreen;
+			}
+			.slot {
+			  background: lightblue;
+			}
+			.ble {
+			  background: mediumpurple;
+			}
+			.monitor {
+			  background: lightpink;
+			}
+			.hidden {
+			  display: none;
+			}
+        </style>
+    </head>
+    <body>
+
+<div class="linac">
+  <div class="info_linac">Linac1</div>
+  <div class="sections">
+    <div class="section">
+	  <div class="info_section">Section1</div>
+	  <div class="cells hidden">
+	    <div class="cell">
+		  <div class="info_cell">Cell1.1</div>
+		  <div class="slots hidden">
+		    <div class="slot">
+			  <div class="info_slot">Slot1.1.1</div>
+			  <div class="bles hidden">
+			    <div class="ble">
+				  <div class="info_ble">Ble1.1.1.1</div>
+				  <div class="monitors hidden">
+				    <div class="monitor">
+					  <div class="info_monitor">Monitor1.1.1.1.1</div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	    <div class="cell">
+		  <div class="info_cell">Cell1.2</div>
+		  <div class="slots hidden">
+		    <div class="slot">
+			  <div class="info_slot">Slot1.2.1</div>
+			  <div class="bles hidden">
+			    <div class="ble">
+				  <div class="info_ble">Ble1.2.1.1</div>
+				  <div class="monitors hidden">
+				    <div class="monitor">
+					  <div class="info_monitor">Monitor1.2.1.1.1</div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	    <div class="cell">
+		  <div class="info_cell">Cell1.3</div>
+		  <div class="slots hidden">
+		    <div class="slot">
+			  <div class="info_slot">Slot1.3.1</div>
+			  <div class="bles hidden">
+			    <div class="ble">
+				  <div class="info_ble">Ble1.3.1.1</div>
+				  <div class="monitors hidden">
+				    <div class="monitor">
+					  <div class="info_monitor">Monitor1.3.1.1.1</div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	    <div class="cell">
+		  <div class="info_cell">Cell1.4</div>
+		  <div class="slots hidden">
+		    <div class="slot">
+			  <div class="info_slot">Slot1.4.1</div>
+			  <div class="bles hidden">
+			    <div class="ble">
+				  <div class="info_ble">Ble1.4.1.1</div>
+				  <div class="monitors hidden">
+				    <div class="monitor">
+					  <div class="info_monitor">Monitor1.4.1.1.1</div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+    <div class="section">
+	  <div class="info_section">Section2</div>
+	  <div class="cells hidden">
+	    <div class="cell">
+		  <div class="info_cell">Cell2.1</div>
+		  <div class="slots hidden">
+		    <div class="slot">
+			  <div class="info_slot">Slot2.1.1</div>
+			  <div class="bles hidden">
+			    <div class="ble">
+				  <div class="info_ble">Ble2.1.1.1</div>
+				  <div class="monitors hidden">
+				    <div class="monitor">
+					  <div class="info_monitor">Monitor2.1.1.1.1</div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+		$('.section').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.cells').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.cells').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+		$(".section div").click(function(e) {
+		    e.stopPropagation();
+		});
+		$('.cell').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.slots').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.slots').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+		$('.slot').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.bles').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.bles').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+		$('.ble').click(function() {
+		    if (!$(this).hasClass('Active')) {
+		        $(this).find('.monitors').show();
+		        $(this).addClass('Active');
+		    } else {
+		        $(this).find('.monitors').hide();
+		        $(this).removeClass('Active');
+		    }
+		});
+		$('.info_section').click(function() {
+		    if (!$(this).parent().hasClass('Active')) {
+		        $(this).parent().find('.cells').show();
+		        $(this).parent().addClass('Active');
+		    } else {
+		        $(this).parent().find('.cells').hide();
+		        $(this).parent().removeClass('Active');
+		    }
+		});
+		$('.info_cell').click(function() {
+		    if (!$(this).parent().hasClass('Active')) {
+		        $(this).parent().find('.slots').show();
+		        $(this).parent().addClass('Active');
+		    } else {
+		        $(this).parent().find('.slots').hide();
+		        $(this).parent().removeClass('Active');
+		    }
+		});
+		$('.info_slot').click(function() {
+		    if (!$(this).parent().hasClass('Active')) {
+		        $(this).parent().find('.bles').show();
+		        $(this).parent().addClass('Active');
+		    } else {
+		        $(this).parent().find('.bles').hide();
+		        $(this).parent().removeClass('Active');
+		    }
+		});
+		$('.info_ble').click(function() {
+		    if (!$(this).parent().hasClass('Active')) {
+		        $(this).parent().find('.monitors').show();
+		        $(this).parent().addClass('Active');
+		    } else {
+		        $(this).parent().find('.monitors').hide();
+		        $(this).parent().removeClass('Active');
+		    }
+		});
+	</script>
+    </body>
+</html>
