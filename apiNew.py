@@ -1,3 +1,4 @@
+import sys
 from flask import Flask, request, render_template, jsonify
 from flask.ext.restful import reqparse, abort, Api, Resource
 
@@ -596,6 +597,8 @@ def index():
     return render_template('template.html', lattice=lattice, links=infoLinksDataJson)
 
 
+def main(debug,host):
+    app.run(debug=debug, host=host)
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+if __name__ == "__main__":
+    main(sys.argv[1], sys.argv[2])
